@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=5 format=3 uid="uid://3muonx48wxxe"]
 
-[ext_resource type="PackedScene" uid="uid://ciyh5lb3xayrd" path="res://player.tscn" id="1_7c3tc"]
+[ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
 [ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="2_cd0pm"]
+[ext_resource type="PackedScene" uid="uid://caw7rqaxhu3h7" path="res://enemy.tscn" id="2_igdh4"]
 
 [sub_resource type="TileSet" id="TileSet_uknnm"]
 tile_size = Vector2i(32, 32)
@@ -14,6 +15,8 @@ format = 2
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_7c3tc")]
 position = Vector2(1, 2)
+
+[node name="enemy" parent="TileMap" instance=ExtResource("2_igdh4")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
