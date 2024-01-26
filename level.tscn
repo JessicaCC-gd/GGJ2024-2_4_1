@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=3 format=3 uid="uid://mls4rkurn5y2"]
 
-[ext_resource type="PackedScene" uid="uid://ciyh5lb3xayrd" path="res://player.tscn" id="1_7c3tc"]
+[ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
 
 [sub_resource type="TileSet" id="TileSet_uknnm"]
 tile_size = Vector2i(32, 32)

@@ -12,3 +12,5 @@ sprite_frames = SubResource("SpriteFrames_vhlun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pe2hc")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
