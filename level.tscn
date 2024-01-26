@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mls4rkurn5y2"]
+[gd_scene load_steps=4 format=3 uid="uid://3muonx48wxxe"]
 
-[ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
+[ext_resource type="PackedScene" uid="uid://ciyh5lb3xayrd" path="res://player.tscn" id="1_7c3tc"]
+[ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="2_cd0pm"]
 
 [sub_resource type="TileSet" id="TileSet_uknnm"]
 tile_size = Vector2i(32, 32)
@@ -16,3 +17,11 @@ position = Vector2(1, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(6.48499e-05, 118.25)
+scale = Vector2(2.01563, 2.01563)
+texture = ExtResource("2_cd0pm")
