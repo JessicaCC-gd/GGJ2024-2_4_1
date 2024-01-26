@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://mls4rkurn5y2"]
+
+[ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
+
+[sub_resource type="TileSet" id="TileSet_uknnm"]
+tile_size = Vector2i(32, 32)
+
+[node name="level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_uknnm")
+format = 2
+
+[node name="Player" parent="TileMap" instance=ExtResource("1_7c3tc")]
+position = Vector2(475, 233)
