@@ -12,4 +12,7 @@ tile_set = SubResource("TileSet_uknnm")
 format = 2
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_7c3tc")]
-position = Vector2(475, 233)
+position = Vector2(1, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
