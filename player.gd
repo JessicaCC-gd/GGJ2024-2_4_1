@@ -11,18 +11,22 @@ func _physics_process(delta):
 	var input = Vector2()
 	if Input.is_action_pressed("move_up") :
 		_animated_sprite.play("walk")
+		_animated_sprite.rotation_degrees = 0
 		input.y -= 1
 		input.x = 0
 	elif Input.is_action_pressed("move_down"):
 		_animated_sprite.play("walk")
+		_animated_sprite.rotation_degrees = 180
 		input.y += 1
 		input.x = 0
 	elif Input.is_action_pressed("move_left"):
 		_animated_sprite.play("walk")
+		_animated_sprite.rotation_degrees = 270
 		input.x -= 1
 		input.y = 0
 	elif Input.is_action_pressed("move_right"):
 		_animated_sprite.play("walk")
+		_animated_sprite.rotation_degrees = 90
 		input.x += 1
 		input.y = 0
 	else:
