@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://danj4or15odof"]
 
-[ext_resource type="Texture2D" uid="uid://dw2wp4km8371c" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
+[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_r2d8k"]
 [ext_resource type="Texture2D" uid="uid://kspv4a8heywr" path="res://assets/sprites/tickler_idle.png" id="2_uwyc5"]
 
@@ -58,14 +58,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
-radius = 20.025
+radius = 41.0122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plqk6"]
 radius = 11.1803
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 32775
 script = ExtResource("1_r2d8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -86,5 +86,6 @@ shape = SubResource("CircleShape2D_pe2hc")
 rotation = 1.5708
 shape = SubResource("CircleShape2D_plqk6")
 
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

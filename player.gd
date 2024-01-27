@@ -17,7 +17,13 @@ var no_cats = 5
 var no_tea = 3
 var cat_cooldown_active = false
 var cat_cooldown_timer = Timer.new()
+var dash_cooldown_timer = Timer.new()
+var dash_duration_timer = Timer.new()
 var no_banana = 10
+var dash = false
+@export var dash_avaliable = true
+
+const BOOST = 2
 	
 func drop_scent():
 	if len(trail) >= max_trail_count:
@@ -33,6 +39,12 @@ func _ready():
 	scent_timer.timeout.connect(drop_scent)
 	add_child(scent_timer)
 	scent_timer.start()
+	dash_cooldown_timer.timeout.connect(reactivate_dash)
+	dash_cooldown_timer.wait_time = 10.0
+	add_child(dash_cooldown_timer)
+	dash_duration_timer.wait_time = 2.0
+	dash_duration_timer.timeout.connect(disable_dash)
+	add_child(dash_duration_timer)
 
 func _physics_process(delta):
 	if laughter_meter == laughter_max:
@@ -48,7 +60,10 @@ func _physics_process(delta):
 		input_dir.y += 1
 
 	player_animation(input_dir)
-	velocity = input_dir.normalized() * speed
+	var boost = 1
+	if dash == true:
+		boost=BOOST
+	velocity = input_dir.normalized() * speed * boost
 
 	if move_and_slide():
 		for i in get_slide_collision_count():
@@ -72,9 +87,21 @@ func _physics_process(delta):
 		banana.position = position
 		no_banana -= 1
 		get_parent().add_child(banana)
+	if Input.is_action_just_pressed("action_4") && dash_avaliable:
+		dash_cooldown_timer.start()
+		dash_duration_timer.start()
+		dash = true
+		dash_avaliable = false
 
 func reactivate_cat():
 	cat_cooldown_active = false
+	
+func reactivate_dash():
+	dash_avaliable = true
+	dash_cooldown_timer.stop()
+	
+func disable_dash():
+	dash = false
 
 func player_animation(input_dir):
 	if input_dir.x != 0 || input_dir.y != 0:
