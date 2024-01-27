@@ -12,6 +12,7 @@ var trail = []
 var max_trail_count = 5
 var scent_timer = Timer.new()
 var cat_scene = preload("res://cat.tscn")
+var banana_scene = preload("res://banana.tscn")
 var no_cats = 5
 var no_tea = 3
 var cat_cooldown_active = false

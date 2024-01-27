@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpyky3qfidgc4"]
+[gd_scene load_steps=9 format=3 uid="uid://boxgqh4m486e4"]
 
 [ext_resource type="Texture2D" uid="uid://d3pk6pou6g1q4" path="res://assets/sprites/cat_idle.png" id="1_k01sr"]
 [ext_resource type="Script" path="res://cat.gd" id="1_qxqcj"]
