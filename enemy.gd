@@ -22,7 +22,8 @@ func _chase():
 	if !_raycast.is_colliding():
 		direction = _raycast.target_position.normalized()
 		#print("Enemy can see player")
-	
+	else:
+		direction = Vector2(0, 0)
 	
 func _physics_process(delta):
 	#direction = (get_node("../Player").global_position - self.global_position).normalized()
