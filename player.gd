@@ -55,6 +55,9 @@ func _physics_process(delta):
 		cat.position = position
 		no_cats -= 1
 		get_parent().add_child(cat)
+	if Input.is_action_just_pressed("action_2") && no_tea > 0 && laughter_meter > 0:
+		laughter_meter = max(laughter_meter - 10, 0)
+		no_tea -= 1
 
 
 func player_animation(input_dir):
