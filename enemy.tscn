@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://danj4or15odof"]
 
-[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
+[ext_resource type="Texture2D" uid="uid://dw2wp4km8371c" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_r2d8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jygyw"]
@@ -63,6 +63,8 @@ radius = 41.0122
 height = 28.0
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_r2d8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
