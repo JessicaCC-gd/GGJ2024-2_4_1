@@ -9,12 +9,14 @@ const JUMP_VELOCITY = -400.0
 @onready var _animated_sprite = $AnimatedSprite2D
 
 var direction = Vector2(0, 0)
-var speed = 3000.0
+var speed = 30.0
 
 func _ready():
-	direction = (get_node("../Player").global_position - self.position).normalized()
+	pass
 
 func _physics_process(delta):
-	direction = (get_node("../Player").global_position - self.position).normalized()
-	velocity = direction * speed * delta
+	print(get_node("../Player").global_position, self.global_position)
+	direction = (get_node("../Player").global_position - self.global_position).normalized()
+	_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
+	velocity = direction * speed
 	move_and_slide()

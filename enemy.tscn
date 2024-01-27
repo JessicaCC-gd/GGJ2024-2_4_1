@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://caw7rqaxhu3h7"]
+[gd_scene load_steps=10 format=3 uid="uid://danj4or15odof"]
 
-[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
+[ext_resource type="Texture2D" uid="uid://dw2wp4km8371c" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_r2d8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jygyw"]
@@ -63,15 +63,8 @@ radius = 16.0
 script = ExtResource("1_r2d8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(75, 73)
 sprite_frames = SubResource("SpriteFrames_3l6sg")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(74, 74)
 shape = SubResource("CircleShape2D_pe2hc")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-navigation_layers = 65535
-avoidance_layers = 0
-avoidance_mask = 0
