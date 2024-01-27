@@ -17,8 +17,8 @@ func _ready():
 	_animated_sprite.play("walk")
 
 func _chase():
-	_raycast.set_target_position(_target.global_position - global_position)
-	_raycast.force_raycast_update()
+	#_raycast.set_target_position(_target.global_position - global_position)
+	#_raycast.force_raycast_update()
 	#if !_raycast.is_colliding():
 		# Enemy has direct LOS on target
 	#	direction = _raycast.target_position.normalized()
