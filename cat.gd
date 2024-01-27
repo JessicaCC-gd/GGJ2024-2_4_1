@@ -14,7 +14,6 @@ func _ready():
 	despawn_timer.start()
 	
 func _despawn():
-	print("despawn cat")
 	var smoke = smoke_scene.instantiate()
 	smoke.position = position
 	get_parent().add_child(smoke)
