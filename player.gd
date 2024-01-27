@@ -14,14 +14,19 @@ var scent_timer = Timer.new()
 var cat_scene = preload("res://cat.tscn")
 var no_cats = 5
 var no_tea = 3
+var cat_cooldown_active = false
+var cat_cooldown_timer = Timer.new()
 	
 func drop_scent():
 	if len(trail) >= max_trail_count:
 		trail.pop_front()
 	trail.push_back(global_position)
 
-
 func _ready():
+	cat_cooldown_timer.wait_time = 10.0
+	cat_cooldown_timer.one_shot = true
+	cat_cooldown_timer.timeout.connect(reactivate_cat)
+	add_child(cat_cooldown_timer)
 	scent_timer.wait_time = 1.0
 	scent_timer.timeout.connect(drop_scent)
 	add_child(scent_timer)
@@ -50,15 +55,19 @@ func _physics_process(delta):
 				var dir = col.get_collider().global_position.direction_to(self.global_position)
 				col.get_collider().position -= dir * force * delta
 				
-	if Input.is_action_just_pressed("action_1") && no_cats > 0:
+	if Input.is_action_just_pressed("action_1") && no_cats > 0 && cat_cooldown_active == false:
 		var cat = cat_scene.instantiate()
 		cat.position = position
 		no_cats -= 1
 		get_parent().add_child(cat)
+		cat_cooldown_active = true
+		cat_cooldown_timer.start()
 	if Input.is_action_just_pressed("action_2") && no_tea > 0 && laughter_meter > 0:
 		laughter_meter = max(laughter_meter - 10, 0)
 		no_tea -= 1
 
+func reactivate_cat():
+	cat_cooldown_active = false
 
 func player_animation(input_dir):
 	if input_dir.x != 0 || input_dir.y != 0:
