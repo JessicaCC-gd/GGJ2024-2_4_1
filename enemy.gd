@@ -16,18 +16,13 @@ func _ready():
 	add_child(damage_timer)
 	_animated_sprite.play("walk")
 
-func _chase():
-	#_raycast.set_target_position(_target.global_position - global_position)
-	#_raycast.force_raycast_update()
-	#if !_raycast.is_colliding():
-		# Enemy has direct LOS on target
-	#	direction = _raycast.target_position.normalized()
-	#else:
-	#	for scent in _target.trail:
-	#		direction = _get_los(scent)
-	#		if direction != null: break
-	#	if direction == null: direction = Vector2(0, 0)
+func _chase():                              
 	direction == null
+	
+	if $"../cat":
+		direction = _get_los($"../cat".global_position)
+		if direction != null: return
+	
 	var size = len(_target.trail)
 	for n in range(size-1, -1, -1):
 			direction = _get_los(_target.trail[n])
@@ -45,7 +40,6 @@ func _get_los(target_pos):
 	
 
 func _physics_process(delta):
-	#direction = (get_node("../Player").global_position - self.global_position).normalized()
 	_chase()
 	_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
 	velocity = direction * speed
