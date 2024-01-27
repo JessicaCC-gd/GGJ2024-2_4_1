@@ -1,6 +1,7 @@
-extends Area2D
+extends Node2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var _area_2d = $Area2D
 
 var smoke_scene = preload("res://smoke.tscn")
 var despawn_timer
@@ -20,5 +21,5 @@ func _despawn():
 	queue_free()
 
 
-func _on_area_2d_body_entered(body):
-	print("enemy entered")
+func _on_area_2d_area_entered(area):
+	print("banana")

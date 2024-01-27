@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://danj4or15odof"]
 
-[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
+[ext_resource type="Texture2D" uid="uid://dw2wp4km8371c" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_r2d8k"]
 [ext_resource type="Texture2D" uid="uid://kspv4a8heywr" path="res://assets/sprites/tickler_idle.png" id="2_uwyc5"]
 
@@ -64,20 +64,23 @@ radius = 41.0122
 radius = 11.1803
 
 [node name="enemy" type="CharacterBody2D"]
-z_index = 3
 collision_layer = 2
-collision_mask = 32775
+collision_mask = 7
 script = ExtResource("1_r2d8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3l6sg")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = -1
 shape = SubResource("CircleShape2D_pe2hc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-45, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
