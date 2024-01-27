@@ -1,11 +1,12 @@
-extends Label
+extends CanvasLayer
 
+@onready var player = $"../TileMap/Player"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	set_text(str($"../../TileMap/Player".current_damage))
+	$label_1.set_text(str(player.no_cats))
+	$label_2.set_text(str(player.no_tea))

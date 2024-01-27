@@ -12,6 +12,8 @@ var trail = []
 var max_trail_count = 5
 var scent_timer = Timer.new()
 var cat_scene = preload("res://cat.tscn")
+var no_cats = 5
+var no_tea = 3
 	
 func drop_scent():
 	if len(trail) >= max_trail_count:
@@ -48,9 +50,10 @@ func _physics_process(delta):
 				var dir = col.get_collider().global_position.direction_to(self.global_position)
 				col.get_collider().position -= dir * force * delta
 				
-	if Input.is_action_just_pressed("action_1"):
+	if Input.is_action_just_pressed("action_1") && no_cats > 0:
 		var cat = cat_scene.instantiate()
 		cat.position = position
+		no_cats -= 1
 		get_parent().add_child(cat)
 
 
