@@ -8,7 +8,7 @@ class_name Enemy
 
 var smoke_scene = preload("res://smoke.tscn")
 var direction = Vector2(0, 0)
-var speed = 30.0
+var speed = 50.0
 var damage_timer = Timer.new()
 var is_stunned = false
 

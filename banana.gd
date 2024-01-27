@@ -7,12 +7,14 @@ func _ready():
 	_animated_sprite.play("default")
 	
 func _process(delta):
-	_animated_sprite.rotation += delta * 2 * PI
+	if velocity.length() > 20:
+		_animated_sprite.rotation += delta * 2 * PI
 	var distance_to_player = (get_node('../Player').global_position - global_position).length()
 	if distance_to_player > 1000:
 		queue_free()
 	
 func _physics_process(delta):
+	velocity *= 0.95
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):

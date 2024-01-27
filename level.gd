@@ -20,7 +20,7 @@ func _ready():
 	add_child(enemy_spawn_timer)
 	add_child(banana_spawn_timer)
 	banana_spawn_timer.wait_time = 1.0
-	enemy_spawn_timer.wait_time = 0.25
+	enemy_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.one_shot = false
 	enemy_spawn_timer.start()
 	banana_spawn_timer.start()
