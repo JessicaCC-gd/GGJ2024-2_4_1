@@ -22,4 +22,5 @@ func _despawn():
 
 
 func _on_area_2d_area_entered(area):
-	print("banana")
+	#if area.get_parent().name == "enemy":
+	area.get_parent().die()

@@ -5,9 +5,11 @@ extends CharacterBody2D
 @onready var _raycast = $RayCast2D
 @onready var _target = get_node("../Player")
 
+var smoke_scene = preload("res://smoke.tscn")
 var direction = Vector2(0, 0)
 var speed = 30.0
 var damage_timer = Timer.new()
+var is_stunned = false
 
 func _ready():
 	add_to_group("enemies")
@@ -51,6 +53,8 @@ func _process(delta):
 func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
+	if is_stunned:
+		print(is_stunned)
 
 func damage_player():
 	get_node("../Player").laughter_meter += 1
@@ -63,3 +67,9 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.name == "Player" :
 		damage_timer.stop()
+
+func die():
+	var smoke = smoke_scene.instantiate()
+	smoke.position = position
+	get_parent().add_child(smoke)
+	queue_free()
