@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du8kaedwlde1b"
-path="res://.godot/imported/emotions.png-108bd96c2d12fc546777f653edfb041b.ctex"
+uid="uid://dtx5oa0dw3jtj"
+path="res://.godot/imported/smoke_puff.png-b1515a6583c3c784f8748f95ec85d30e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/emotions.png"
-dest_files=["res://.godot/imported/emotions.png-108bd96c2d12fc546777f653edfb041b.ctex"]
+source_file="res://assets/sprites/smoke_puff.png"
+dest_files=["res://.godot/imported/smoke_puff.png-b1515a6583c3c784f8748f95ec85d30e.ctex"]
 
 [params]
 
