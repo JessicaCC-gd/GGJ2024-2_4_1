@@ -19,8 +19,8 @@ func _chase():
 	_raycast.set_target_position(_target.global_position - global_position)
 	_raycast.force_raycast_update()
 	if !_raycast.is_colliding():
-		#direction = _raycast.target_position.normalized()
-		print("Enemy can see player")
+		direction = _raycast.target_position.normalized()
+		#print("Enemy can see player")
 	
 	
 func _physics_process(delta):
