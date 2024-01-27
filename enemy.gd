@@ -55,10 +55,12 @@ func damage_player():
 	get_node("../Player").laughter_meter += 1
 
 func _on_area_2d_body_entered(body):
+	if $"../cat":
+		print(str($"../cat".position))
 	if body.name == "Player" :
 		damage_player()
 		damage_timer.start()
 
 func _on_area_2d_body_exited(body):
-	if body== $"../Player":
+	if body.name == "Player" :
 		damage_timer.stop()

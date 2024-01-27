@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new()
 
 @onready var player = $TileMap/Player
 
+
 func _ready():
 	enemy_spawn_timer = Timer.new()
 	add_child(enemy_spawn_timer)

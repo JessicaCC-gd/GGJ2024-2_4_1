@@ -57,17 +57,17 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
-radius = 16.0
+radius = 41.0122
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cla8n"]
+height = 28.0
 
 [node name="enemy" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 7
 script = ExtResource("1_r2d8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3l6sg")
 animation = &"walk"
-
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 7
@@ -75,7 +75,6 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = -1
-
 shape = SubResource("CircleShape2D_pe2hc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
