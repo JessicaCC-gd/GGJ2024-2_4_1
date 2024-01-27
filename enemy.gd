@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
+#var _raycast: RayCast2D
+@onready var _raycast = $RayCast2D
+@onready var _target = get_node("../Player")
 
 var direction = Vector2(0, 0)
 var speed = 30.0
@@ -12,8 +15,17 @@ func _ready():
 	damage_timer.wait_time = 1.0
 	add_child(damage_timer)
 
+func _chase():
+	_raycast.set_target_position(_target.global_position - global_position)
+	_raycast.force_raycast_update()
+	if !_raycast.is_colliding():
+		#direction = _raycast.target_position.normalized()
+		print("Enemy can see player")
+	
+	
 func _physics_process(delta):
-	direction = (get_node("../Player").global_position - self.global_position).normalized()
+	#direction = (get_node("../Player").global_position - self.global_position).normalized()
+	_chase()
 	_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
 	velocity = direction * speed
 	move_and_slide()

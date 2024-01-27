@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://danj4or15odof"]
+[gd_scene load_steps=10 format=3 uid="uid://caw7rqaxhu3h7"]
 
-[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_r2d8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jygyw"]
@@ -79,3 +78,5 @@ shape = SubResource("CircleShape2D_g0b37")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-45, 11)
