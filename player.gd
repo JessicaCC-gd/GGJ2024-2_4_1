@@ -6,12 +6,21 @@ var speed = 200
 var current_damage = 0
 var laughter_meter = 0
 var damage_timer = Timer.new()
+var scent_timer = Timer.new()
+var scent_trail = []
+
+func drop_scent():
+  scent_trail.push_front(scent)
+	
 
 func _ready():
 	damage_timer.wait_time = 1.0
 	damage_timer.timeout.connect(damage)
+	scent_timer.wait_time = 1.0
+	scent_timer.timeout.connect()
 
 func _physics_process(delta):
+#	damage()
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		input_dir.x -= 1	
