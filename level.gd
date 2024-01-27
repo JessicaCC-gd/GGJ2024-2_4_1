@@ -2,9 +2,12 @@ extends Node2D
 
 const MAX_ENEMIES = 100
 const SPAWN_DISTANCE = 300
+const MAX_PU_BANANAS = 20
 
 var enemy_spawn_timer
 var enemy_scene = preload("res://enemy.tscn")
+var banana_spawn_timer = Timer.new()
+var pu_banana_scene = preload("res://pu_banana.tscn")
 var rng = RandomNumberGenerator.new()
 
 @onready var player = $TileMap/Player
@@ -15,15 +18,25 @@ func _ready():
 	SignalHandler.angry.connect(crowd_angry)
 	enemy_spawn_timer = Timer.new()
 	add_child(enemy_spawn_timer)
+	add_child(banana_spawn_timer)
+	banana_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.wait_time = 0.25
 	enemy_spawn_timer.one_shot = false
 	enemy_spawn_timer.start()
+	banana_spawn_timer.start()
+	banana_spawn_timer.connect("timeout", _on_banana_timer_timeout)
 	enemy_spawn_timer.connect("timeout", _on_enemy_timer_timeout)
 
 
 func _process(delta):
 	pass
 	
+func _on_banana_timer_timeout():
+	var banana_count = len(get_tree().get_nodes_in_group("bananas"))
+	if banana_count < MAX_PU_BANANAS:
+		var pu_banana = pu_banana_scene.instantiate()
+		pu_banana.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
+		get_node("TileMap").add_child(pu_banana)
 	
 func _on_enemy_timer_timeout() -> void:
 	var enemy_count = len(get_tree().get_nodes_in_group("enemies"))

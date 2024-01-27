@@ -11,3 +11,4 @@ func _process(delta):
 	$label_1.set_text(str(player.no_cats))
 	$label_2.set_text(str(player.no_tea))
 	$label_4.set_text(str(floor(player.dash_cooldown_timer.time_left)))
+	$label_3.set_text(str(player.no_banana))
