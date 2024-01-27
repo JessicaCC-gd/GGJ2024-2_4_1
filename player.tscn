@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1mse10v0ltx4"]
+[gd_scene load_steps=11 format=3 uid="uid://d1mse10v0ltx4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_axhjp"]
 [ext_resource type="Texture2D" uid="uid://bu4q2xw6wcqhi" path="res://assets/sprites/player_walk.png" id="1_melsa"]
+[ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="3_b3twm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hspqp"]
 radius = 15.0
@@ -63,3 +64,12 @@ shape = SubResource("CapsuleShape2D_hspqp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i5rjt")
 animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+z_index = 2
+position = Vector2(6.48499e-05, 118.25)
+scale = Vector2(2.01563, 2.01563)
+texture = ExtResource("3_b3twm")
