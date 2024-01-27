@@ -17,11 +17,11 @@ func _process(delta):
 	
 	if _laugh_meter.value < 20:
 		emotion.frame = 0
-	if _laugh_meter.value > 40:
+	if _laugh_meter.value >= 20 && _laugh_meter.value < 40:
 		emotion.frame = 1
-	if _laugh_meter.value >60:
+	if _laugh_meter.value >= 40 && _laugh_meter.value < 60:
 		emotion.frame = 2
-	if _laugh_meter.value > 80:
+	if _laugh_meter.value >= 60 && _laugh_meter.value < 80:
 		emotion.frame = 3
-	if _laugh_meter.value == 100:
+	if _laugh_meter.value >=80 && _laugh_meter.value < 100:
 		emotion.frame = 4

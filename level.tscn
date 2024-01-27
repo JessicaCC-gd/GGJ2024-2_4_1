@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="4_t51qj"]
 [ext_resource type="Script" path="res://laughter_meter.gd" id="6_f3vpd"]
 [ext_resource type="AudioStream" uid="uid://bhv8li5bbykn" path="res://assets/sound/angry-mob-loop-6847.mp3" id="7_75ev8"]
-[ext_resource type="Texture2D" uid="uid://cn87byrc5ctg6" path="res://assets/sprites/emotions.png" id="7_hmhi3"]
+[ext_resource type="Texture2D" uid="uid://c5lnmyca172t7" path="res://assets/sprites/emotions.png" id="7_hmhi3"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_keucm")
