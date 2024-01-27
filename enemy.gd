@@ -28,12 +28,10 @@ func _chase():
 	#		if direction != null: break
 	#	if direction == null: direction = Vector2(0, 0)
 	direction == null
-	print(_target.trail)
 	var size = len(_target.trail)
 	for n in range(size-1, -1, -1):
 			direction = _get_los(_target.trail[n])
 			if direction != null:
-				if n != size: print("found a scent not last")
 				break
 	if direction == null: direction = Vector2(0, 0)
 
@@ -58,7 +56,6 @@ func damage_player():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" :
-		print("wooo")
 		damage_player()
 		damage_timer.start()
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-const MAX_ENEMIES = 10
+const MAX_ENEMIES = 100
 const SPAWN_DISTANCE = 400
 
 var enemy_spawn_timer
@@ -12,7 +12,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	enemy_spawn_timer = Timer.new()
 	add_child(enemy_spawn_timer)
-	enemy_spawn_timer.wait_time = 1.0
+	enemy_spawn_timer.wait_time = 0.25
 	enemy_spawn_timer.one_shot = false
 	enemy_spawn_timer.start()
 	enemy_spawn_timer.connect("timeout", _on_enemy_timer_timeout)

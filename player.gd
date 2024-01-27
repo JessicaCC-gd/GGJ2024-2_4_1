@@ -9,7 +9,7 @@ var current_damage = 0
 var laughter_meter = 0
 var laughter_max = 100
 var trail = []
-var max_trail_count = 10
+var max_trail_count = 5
 var scent_timer = Timer.new()
 var cat_scene = preload("res://cat.tscn")
 	
