@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.text == str($"../../TileMap/player".current_damage)
+	set_text(str($"../../TileMap/Player".current_damage))

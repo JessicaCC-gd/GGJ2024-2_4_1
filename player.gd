@@ -3,8 +3,14 @@ extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 var speed = 200
+var current_damage = 0
+var damage_timer = Timer.new()
+
+func _ready():
+	damage_timer.wait_time = 1.0
 
 func _physics_process(delta):
+#	damage()
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		input_dir.x -= 1	
@@ -41,3 +47,14 @@ func player_animation(input_dir):
 		_animated_sprite.rotation_degrees = 0
 	elif input_dir.x == 0 && input_dir.y > 0:
 		_animated_sprite.rotation_degrees = 180
+
+#func damage():
+	
+
+func _on_area_2d_body_entered(body):
+	if body.name == "enemy":
+		current_damage += 1
+
+func _on_area_2d_body_exited(body):
+	if body.name == "enemy":
+		current_damage -= 1

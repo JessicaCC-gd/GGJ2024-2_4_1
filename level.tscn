@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=8 format=3 uid="uid://3muonx48wxxe"]
 
 [ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
-[ext_resource type="Texture2D" uid="uid://cs34k1n8dcvgf" path="res://assets/tilesheet.png" id="1_ifme0"]
+[ext_resource type="Texture2D" uid="uid://b45o3jhdjy14k" path="res://assets/tilesheet.png" id="1_ifme0"]
 [ext_resource type="PackedScene" uid="uid://caw7rqaxhu3h7" path="res://enemy.tscn" id="2_igdh4"]
+[ext_resource type="Script" path="res://damage.gd" id="4_48tqj"]
+[ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="4_t51qj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xfl40"]
 texture = ExtResource("1_ifme0")
@@ -241,5 +243,27 @@ position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_bcki8")
 navigation_layers = 65535
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
+position = Vector2(1, 0)
+navigation_polygon = SubResource("NavigationPolygon_bcki8")
+navigation_layers = 65535
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="damage" type="Label" parent="ui"]
+top_level = true
+z_index = 3
+offset_left = 718.0
+offset_top = 516.0
+offset_right = 769.0
+offset_bottom = 539.0
+text = "HELLO"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_48tqj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ui"]
+position = Vector2(512, 537)
+scale = Vector2(4, 4)
+texture = ExtResource("4_t51qj")
