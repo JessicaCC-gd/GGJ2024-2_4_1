@@ -16,31 +16,20 @@ func _ready():
 	add_child(damage_timer)
 	_animated_sprite.play("walk")
 
-func _chase(): 
+func _get_chase_direction(): 
 	var chasing_cat = false      
 	if get_node_or_null("../cat") != null:
 		var cat_direction = _get_los($"../cat".global_position)
 		if cat_direction != null:
-			direction = cat_direction
-			_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
-			_animated_sprite.play("walk")
-			chasing_cat = true
-		
-	if !chasing_cat:
-		var size = len(_target.trail)
-		var trail_direction = null
-		for n in range(size-1, -1, -1):
-			trail_direction = _get_los(_target.trail[n])
-			if trail_direction != null:
-				break
+			return cat_direction
 
-		if trail_direction == null: 
-			_animated_sprite.play("idle")
-			direction = Vector2.ZERO
-		else:
-			direction = trail_direction
-			_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
-			_animated_sprite.play("walk")
+	var size = len(_target.trail)
+	var trail_direction = null
+	for n in range(size-1, -1, -1):
+		trail_direction = _get_los(_target.trail[n])
+		if trail_direction != null:
+			return trail_direction
+	return null
 
 func _get_los(target_pos):
 	_raycast.set_target_position(target_pos - global_position)
@@ -50,7 +39,14 @@ func _get_los(target_pos):
 	return null
 	
 func _process(delta):
-	_chase()
+	var chase_direction = _get_chase_direction()
+	if chase_direction != null:
+		direction = chase_direction
+		_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
+		_animated_sprite.play("walk")
+	else:
+		direction = Vector2.ZERO
+		_animated_sprite.play("idle")
 
 func _physics_process(delta):
 	velocity = direction * speed
