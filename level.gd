@@ -1,7 +1,7 @@
 extends Node2D
 
 const MAX_ENEMIES = 100
-const SPAWN_DISTANCE = 400
+const SPAWN_DISTANCE = 300
 
 var enemy_spawn_timer
 var enemy_scene = preload("res://enemy.tscn")
@@ -29,8 +29,8 @@ func _on_enemy_timer_timeout() -> void:
 	var enemy_count = len(get_tree().get_nodes_in_group("enemies"))
 	if enemy_count < MAX_ENEMIES:
 		var enemy = enemy_scene.instantiate()
-		enemy.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))		
-		get_node("TileMap").add_child(enemy)
+		enemy.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
+		get_node("TileMap").add_child(enemy)	
 		
 func crowd_aw():
 	$AudioStreamPlayer.stream = load("res://assets/sound/crowdyayapplause25ppllong-6948.mp3")
