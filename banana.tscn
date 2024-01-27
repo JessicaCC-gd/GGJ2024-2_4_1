@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://2iuxqnsn5181"]
+[gd_scene load_steps=5 format=3 uid="uid://cgvw6wjdjt4k0"]
 
 [ext_resource type="Script" path="res://banana.gd" id="1_bf6tp"]
 [ext_resource type="Texture2D" uid="uid://b7fyps667ot0g" path="res://assets/sprites/banana_peel.png" id="2_g6gus"]
@@ -15,10 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5fars"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_txdqf"]
-radius = 4.12311
+radius = 1.45
 
 [node name="banana" type="CharacterBody2D"]
 collision_layer = 0
@@ -31,13 +28,9 @@ sprite_frames = SubResource("SpriteFrames_fy3s3")
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32768
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_5fars")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_txdqf")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5fars")
