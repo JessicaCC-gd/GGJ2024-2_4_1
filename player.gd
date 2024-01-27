@@ -6,6 +6,7 @@ var speed = 150.0
 var force = 100.0
 var current_damage = 0
 var laughter_meter = 0
+var laughter_max = 100
 var trail = Trail.new()
 var scent_timer = Timer.new()
 
@@ -26,7 +27,8 @@ func _ready():
 	scent_timer.start()
 
 func _physics_process(delta):
-#	damage()
+	if laughter_meter == laughter_max:
+		get_tree().change_scene_to_file("res://game_over.tscn")
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		input_dir.x -= 1	
