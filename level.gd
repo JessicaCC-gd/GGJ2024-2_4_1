@@ -11,6 +11,8 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
+	SignalHandler.aw.connect(crowd_aw)
+	SignalHandler.angry.connect(crowd_angry)
 	enemy_spawn_timer = Timer.new()
 	add_child(enemy_spawn_timer)
 	enemy_spawn_timer.wait_time = 0.25
@@ -29,3 +31,13 @@ func _on_enemy_timer_timeout() -> void:
 		var enemy = enemy_scene.instantiate()
 		enemy.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))		
 		get_node("TileMap").add_child(enemy)
+		
+func crowd_aw():
+	$AudioStreamPlayer.stream = load("res://assets/sound/aww-cute-reaction-6208.mp3")
+	$AudioStreamPlayer.volume_db = 3
+	$AudioStreamPlayer.play()
+	
+func crowd_angry():
+	$AudioStreamPlayer.stream = load("res://assets/sound/angry-mob-loop-6847.mp3")
+	$AudioStreamPlayer.volume_db = -5
+	$AudioStreamPlayer.play()

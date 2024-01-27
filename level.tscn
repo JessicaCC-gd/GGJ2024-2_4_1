@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=8 format=3 uid="uid://3muonx48wxxe"]
 
 [ext_resource type="TileSet" uid="uid://cg5qbb0ok027o" path="res://tileset.tres" id="1_5yl0r"]
 [ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ui.gd" id="4_d8tq0"]
 [ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="4_t51qj"]
 [ext_resource type="Script" path="res://laughter_meter.gd" id="6_f3vpd"]
+[ext_resource type="AudioStream" uid="uid://bhv8li5bbykn" path="res://assets/sound/angry-mob-loop-6847.mp3" id="7_75ev8"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_keucm")
@@ -63,3 +64,8 @@ offset_top = 548.0
 offset_right = 445.0
 offset_bottom = 571.0
 text = "0"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_75ev8")
+volume_db = -5.012
+autoplay = true
