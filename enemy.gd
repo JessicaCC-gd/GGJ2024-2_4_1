@@ -19,7 +19,7 @@ func _ready():
 func _chase():                              
 	direction == null
 	
-	if $"../cat":
+	if get_node_or_null("../cat") != null:
 		direction = _get_los($"../cat".global_position)
 		if direction != null: return
 	
