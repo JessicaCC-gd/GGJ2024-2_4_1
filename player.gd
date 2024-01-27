@@ -6,7 +6,6 @@ var speed = 150.0
 var force = 100.0
 var current_damage = 0
 var laughter_meter = 0
-var damage_timer = Timer.new()
 var trail = Trail.new()
 var scent_timer = Timer.new()
 
@@ -21,8 +20,6 @@ func drop_scent():
 
 
 func _ready():
-	damage_timer.wait_time = 1.0
-	damage_timer.timeout.connect(damage)
 	scent_timer.wait_time = 1.0
 	scent_timer.timeout.connect(drop_scent)
 	add_child(scent_timer)
@@ -72,16 +69,3 @@ func player_animation(input_dir):
 		_animated_sprite.rotation_degrees = 0
 	elif input_dir.x == 0 && input_dir.y > 0:
 		_animated_sprite.rotation_degrees = 180
-
-func damage():
-	laughter_meter += current_damage
-
-func _on_area_2d_body_entered(body):
-	if current_damage == 0:
-		damage_timer.start
-	if body.name == "enemy":
-		current_damage += 1
-
-func _on_area_2d_body_exited(body):
-	if body.name == "enemy":
-		current_damage -= 1
