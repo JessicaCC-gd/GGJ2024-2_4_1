@@ -6,18 +6,23 @@ var speed = 200
 var current_damage = 0
 var laughter_meter = 0
 var damage_timer = Timer.new()
+var trail = Trail.new()
 var scent_timer = Timer.new()
-var scent_trail = []
 
-func drop_scent():
-  scent_trail.push_front(scent)
+class Trail:
+	var max_count = 10
+	var trail = []
 	
+func drop_scent():
+	if len(trail.trail) >= trail.max_count:
+		trail.trail.pop_front()
+	trail.trail.push_back(global_position)
 
 func _ready():
 	damage_timer.wait_time = 1.0
 	damage_timer.timeout.connect(damage)
 	scent_timer.wait_time = 1.0
-	scent_timer.timeout.connect()
+	scent_timer.timeout.connect(drop_scent)
 
 func _physics_process(delta):
 #	damage()
