@@ -215,6 +215,11 @@ terrain_set_0/terrain_1/color = Color(0.921569, 0.439216, 0.25098, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_xfl40")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bcki8"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-255, -149, 253, -148, 255, 101, -256, 101)])
+parsed_collision_mask = 4294901760
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -230,6 +235,11 @@ layer_1/tile_data = PackedInt32Array(-589840, 65536, 0, -589839, 65536, 0, -5898
 position = Vector2(1, 2)
 
 [node name="enemy" parent="TileMap" instance=ExtResource("2_igdh4")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
+position = Vector2(1, 0)
+navigation_polygon = SubResource("NavigationPolygon_bcki8")
+navigation_layers = 65535
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
