@@ -14,6 +14,7 @@ func _ready():
 	damage_timer.timeout.connect(damage_player)
 	damage_timer.wait_time = 1.0
 	add_child(damage_timer)
+	_animated_sprite.play("walk")
 
 func _chase():
 	_raycast.set_target_position(_target.global_position - global_position)

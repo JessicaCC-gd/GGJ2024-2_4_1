@@ -9,17 +9,15 @@ var rng = RandomNumberGenerator.new()
 
 @onready var player = $TileMap/Player
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	enemy_spawn_timer = Timer.new()
 	add_child(enemy_spawn_timer)
 	enemy_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.one_shot = false
 	enemy_spawn_timer.start()
-	enemy_spawn_timer.connect("timeout", self._on_enemy_timer_timeout)
+	enemy_spawn_timer.connect("timeout", _on_enemy_timer_timeout)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
