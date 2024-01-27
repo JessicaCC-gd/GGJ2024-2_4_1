@@ -22,6 +22,8 @@ func _chase():
 		var cat_direction = _get_los($"../cat".global_position)
 		if cat_direction != null:
 			direction = cat_direction
+			_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
+			_animated_sprite.play("walk")
 			chasing_cat = true
 		
 	if !chasing_cat:
@@ -35,10 +37,10 @@ func _chase():
 		if trail_direction == null: 
 			_animated_sprite.play("idle")
 			direction = Vector2.ZERO
-		else: 
+		else:
 			direction = trail_direction
-			_animated_sprite.play("walk")
 			_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
+			_animated_sprite.play("walk")
 
 func _get_los(target_pos):
 	_raycast.set_target_position(target_pos - global_position)
