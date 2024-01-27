@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=16 format=3 uid="uid://3muonx48wxxe"]
 
 [ext_resource type="TileSet" uid="uid://cg5qbb0ok027o" path="res://tileset.tres" id="1_5yl0r"]
 [ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
@@ -7,6 +7,57 @@
 [ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="4_t51qj"]
 [ext_resource type="Script" path="res://laughter_meter.gd" id="6_f3vpd"]
 [ext_resource type="AudioStream" uid="uid://bhv8li5bbykn" path="res://assets/sound/angry-mob-loop-6847.mp3" id="7_75ev8"]
+[ext_resource type="Texture2D" uid="uid://c5lnmyca172t7" path="res://assets/sprites/emotions.png" id="7_hmhi3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywno5"]
+atlas = ExtResource("7_hmhi3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x1ux"]
+atlas = ExtResource("7_hmhi3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr1gs"]
+atlas = ExtResource("7_hmhi3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kojk1"]
+atlas = ExtResource("7_hmhi3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gmtd"]
+atlas = ExtResource("7_hmhi3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4f2g"]
+atlas = ExtResource("7_hmhi3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ki3u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywno5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x1ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr1gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kojk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gmtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4f2g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_keucm")
@@ -62,6 +113,11 @@ offset_top = 548.0
 offset_right = 445.0
 offset_bottom = 571.0
 text = "0"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui"]
+position = Vector2(512, 540)
+scale = Vector2(3.1875, 3)
+sprite_frames = SubResource("SpriteFrames_ki3u2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_75ev8")
