@@ -16,6 +16,7 @@ var no_cats = 5
 var no_tea = 3
 var cat_cooldown_active = false
 var cat_cooldown_timer = Timer.new()
+var no_banana = 10
 	
 func drop_scent():
 	if len(trail) >= max_trail_count:
@@ -65,6 +66,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("action_2") && no_tea > 0 && laughter_meter > 0:
 		laughter_meter = max(laughter_meter - 10, 0)
 		no_tea -= 1
+	if Input.is_action_just_pressed("action_3") && no_banana > 0:
+		var banana = banana_scene.instantiate()
+		banana.position = position
+		no_banana -= 1
+		get_parent().add_child(banana)
 
 func reactivate_cat():
 	cat_cooldown_active = false

@@ -64,6 +64,7 @@ script = ExtResource("1_axhjp")
 shape = SubResource("CapsuleShape2D_hspqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_i5rjt")
 animation = &"idle"
 
