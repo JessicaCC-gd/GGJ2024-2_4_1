@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 @onready var _animated_sprite = $AnimatedSprite2D
-var speed = 200
+var speed = 150.0
+var force = 100.0
 var current_damage = 0
 var laughter_meter = 0
 var damage_timer = Timer.new()
@@ -38,7 +39,13 @@ func _physics_process(delta):
 
 	player_animation(input_dir)
 	velocity = input_dir.normalized() * speed
-	move_and_collide(velocity * delta)
+
+	if move_and_slide(): # true if collided
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is CharacterBody2D:
+				var dir = col.get_collider().global_position.direction_to(self.global_position)
+				col.get_collider().position -= dir * force * delta
 
 
 func player_animation(input_dir):
