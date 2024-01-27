@@ -33,7 +33,7 @@ func _on_enemy_timer_timeout() -> void:
 		get_node("TileMap").add_child(enemy)
 		
 func crowd_aw():
-	$AudioStreamPlayer.stream = load("res://assets/sound/aww-cute-reaction-6208.mp3")
+	$AudioStreamPlayer.stream = load("res://assets/sound/crowdyayapplause25ppllong-6948.mp3")
 	$AudioStreamPlayer.volume_db = 3
 	$AudioStreamPlayer.play()
 	
