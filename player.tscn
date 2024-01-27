@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1mse10v0ltx4"]
+[gd_scene load_steps=11 format=3 uid="uid://d1mse10v0ltx4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_axhjp"]
 [ext_resource type="Texture2D" uid="uid://bu4q2xw6wcqhi" path="res://assets/sprites/player_walk.png" id="1_melsa"]
@@ -55,9 +55,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l4qqu"]
-radius = 31.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_axhjp")
@@ -72,11 +69,6 @@ animation = &"idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_l4qqu")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -86,6 +78,3 @@ offset_right = 955.0
 offset_bottom = 51.0
 text = "test"
 script = ExtResource("3_0es82")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=7 format=3 uid="uid://3muonx48wxxe"]
 
 [ext_resource type="TileSet" uid="uid://cg5qbb0ok027o" path="res://tileset.tres" id="1_5yl0r"]
 [ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
 [ext_resource type="Script" path="res://level.gd" id="1_keucm"]
 [ext_resource type="Script" path="res://damage.gd" id="4_48tqj"]
 [ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="4_t51qj"]
+[ext_resource type="Script" path="res://laughter_meter.gd" id="6_f3vpd"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_keucm")
@@ -37,3 +38,12 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(512, 537)
 scale = Vector2(4, 4)
 texture = ExtResource("4_t51qj")
+
+[node name="laughter_meter" type="ProgressBar" parent="ui"]
+offset_left = 571.0
+offset_top = 556.0
+offset_right = 778.0
+offset_bottom = 579.0
+step = 1.0
+show_percentage = false
+script = ExtResource("6_f3vpd")
