@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://temp.gd" id="3_0es82"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hspqp"]
-radius = 15.0
+radius = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irrv4"]
 atlas = ExtResource("1_melsa")
@@ -60,6 +60,7 @@ collision_layer = 4
 script = ExtResource("1_axhjp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hspqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

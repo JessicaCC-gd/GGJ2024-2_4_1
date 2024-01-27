@@ -36,10 +36,11 @@ func damage_player():
 	get_node("../Player").laughter_meter += 1
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" :
+		print("wooo")
 		damage_player()
 		damage_timer.start()
 
 func _on_area_2d_body_exited(body):
-	if body.name == "Player":
+	if body== $"../Player":
 		damage_timer.paused = true
