@@ -19,11 +19,14 @@ func drop_scent():
 		trail.trail.pop_front()
 	trail.trail.push_back(global_position)
 
+
 func _ready():
 	damage_timer.wait_time = 1.0
 	damage_timer.timeout.connect(damage)
 	scent_timer.wait_time = 1.0
 	scent_timer.timeout.connect(drop_scent)
+	add_child(scent_timer)
+	scent_timer.start()
 
 func _physics_process(delta):
 #	damage()
