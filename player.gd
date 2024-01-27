@@ -8,18 +8,15 @@ var force = 100.0
 var current_damage = 0
 var laughter_meter = 0
 var laughter_max = 100
-var trail = Trail.new()
+var trail = []
+var max_trail_count = 10
 var scent_timer = Timer.new()
 var cat_scene = preload("res://cat.tscn")
-
-class Trail:
-	var max_count = 10
-	var trail = []
 	
 func drop_scent():
-	if len(trail.trail) >= trail.max_count:
-		trail.trail.pop_front()
-	trail.trail.push_back(global_position)
+	if len(trail) >= max_trail_count:
+		trail.pop_front()
+	trail.push_back(global_position)
 
 
 func _ready():

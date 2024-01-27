@@ -19,12 +19,33 @@ func _ready():
 func _chase():
 	_raycast.set_target_position(_target.global_position - global_position)
 	_raycast.force_raycast_update()
+	#if !_raycast.is_colliding():
+		# Enemy has direct LOS on target
+	#	direction = _raycast.target_position.normalized()
+	#else:
+	#	for scent in _target.trail:
+	#		direction = _get_los(scent)
+	#		if direction != null: break
+	#	if direction == null: direction = Vector2(0, 0)
+	direction == null
+	print(_target.trail)
+	var size = len(_target.trail)
+	for n in range(size-1, -1, -1):
+			direction = _get_los(_target.trail[n])
+			if direction != null:
+				if n != size: print("found a scent not last")
+				break
+	if direction == null: direction = Vector2(0, 0)
+
+
+func _get_los(target_pos):
+	_raycast.set_target_position(target_pos - global_position)
+	_raycast.force_raycast_update()
 	if !_raycast.is_colliding():
-		direction = _raycast.target_position.normalized()
-		#print("Enemy can see player")
-	else:
-		direction = Vector2(0, 0)
+		return _raycast.target_position.normalized()
+	return null
 	
+
 func _physics_process(delta):
 	#direction = (get_node("../Player").global_position - self.global_position).normalized()
 	_chase()
