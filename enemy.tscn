@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://caw7rqaxhu3h7"]
 
-[ext_resource type="Texture2D" uid="uid://dw2wp4km8371c" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
+[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_r2d8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jygyw"]
@@ -57,9 +57,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
-radius = 11.0
+radius = 16.0
 
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_r2d8k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -67,7 +69,6 @@ sprite_frames = SubResource("SpriteFrames_3l6sg")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_pe2hc")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
