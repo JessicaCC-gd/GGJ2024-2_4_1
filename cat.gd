@@ -10,7 +10,7 @@ func _ready():
 	_animated_sprite.play("default")
 	despawn_timer = Timer.new()
 	add_child(despawn_timer)
-	despawn_timer.wait_time = 2.0
+	despawn_timer.wait_time = 5.0
 	despawn_timer.timeout.connect(_despawn)
 	despawn_timer.start()
 	$AudioStreamPlayer2D.stream = load("res://assets/sound/cat-meow-6226.mp3")

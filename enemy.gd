@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @onready var _animated_sprite = $AnimatedSprite2D
 #var _raycast: RayCast2D

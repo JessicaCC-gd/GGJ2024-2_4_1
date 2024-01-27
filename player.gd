@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
+var direction = Vector2(0, -1)
 var speed = 150.0
 var force = 100.0
 var current_damage = 0
@@ -19,7 +20,7 @@ var cat_cooldown_active = false
 var cat_cooldown_timer = Timer.new()
 var dash_cooldown_timer = Timer.new()
 var dash_duration_timer = Timer.new()
-var no_banana = 10
+var no_banana = 100
 var dash = false
 @export var dash_avaliable = true
 
@@ -51,13 +52,15 @@ func _physics_process(delta):
 		get_tree().change_scene_to_file("res://game_over.tscn")
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
-		input_dir.x -= 1	
+		input_dir.x -= 1
 	if Input.is_action_pressed("move_right"):
 		input_dir.x += 1
 	if Input.is_action_pressed("move_up"):
 		input_dir.y -= 1
 	if Input.is_action_pressed("move_down"):
 		input_dir.y += 1
+	if input_dir != Vector2.ZERO:
+		direction = input_dir.normalized()
 
 	player_animation(input_dir)
 	var boost = 1
@@ -79,12 +82,15 @@ func _physics_process(delta):
 		get_parent().add_child(cat)
 		cat_cooldown_active = true
 		cat_cooldown_timer.start()
+		
 	if Input.is_action_just_pressed("action_2") && no_tea > 0 && laughter_meter > 0:
 		laughter_meter = max(laughter_meter - 10, 0)
 		no_tea -= 1
+		
 	if Input.is_action_just_pressed("action_3") && no_banana > 0:
 		var banana = banana_scene.instantiate()
 		banana.position = position
+		banana.velocity = direction * 1.5 * speed
 		no_banana -= 1
 		get_parent().add_child(banana)
 	if Input.is_action_just_pressed("action_4") && dash_avaliable:
@@ -108,6 +114,7 @@ func player_animation(input_dir):
 		_animated_sprite.play("walk")
 	else:
 		_animated_sprite.play("idle")
+
 	if input_dir.x > 0 && input_dir.y == 0:
 		_animated_sprite.rotation_degrees = 90
 	elif input_dir.x > 0 && input_dir.y > 0:
