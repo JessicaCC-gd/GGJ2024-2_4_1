@@ -6,11 +6,16 @@ class_name Chicken
 @onready var _target = get_node("../Player")
 
 var smoke_scene = preload("res://smoke.tscn")
+var feather_scene = preload("res://proj/feather.tscn")
+var banana_scene = preload("res://banana.tscn")
 var direction = Vector2(0, 0)
 var speed = 35.0
 var damage_timer = Timer.new()
 var dead_timer = Timer.new()
 var dead = false
+
+var feather_timer = Timer.new()
+
 
 func _ready():
 	_animated_sprite.play("walk")
@@ -21,6 +26,20 @@ func _ready():
 	dead_timer.timeout.connect(remove)
 	dead_timer.wait_time = 1
 	add_child(dead_timer)
+	
+	feather_timer.timeout.connect(_feather_attack)
+	feather_timer.wait_time = 1.0
+	
+	add_child(feather_timer)
+	feather_timer.start()
+	
+func _feather_attack():
+	var feather = feather_scene.instantiate()
+	feather.position = position
+	feather.velocity = direction * 1.5 * speed * 10
+	get_parent().add_child(feather)
+	feather_timer.start()
+	
 
 func _get_chase_direction():
 	# chickens get spooked by cats, flee then despawn
@@ -47,15 +66,16 @@ func _get_los(target_pos):
 	return null
 	
 func _process(delta):
-	if !dead:
-		var chase_direction = _get_chase_direction()
-		if chase_direction != null:
-			direction = chase_direction
-			_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
-			_animated_sprite.play("walk")
-		else:
-			direction = Vector2.ZERO
-			_animated_sprite.play("idle")
+	if dead: return
+	
+	var chase_direction = _get_chase_direction()
+	if chase_direction != null:
+		direction = chase_direction
+		_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
+		_animated_sprite.play("walk")
+	else:
+		direction = Vector2.ZERO
+		_animated_sprite.play("idle")
 
 
 func _physics_process(delta):
