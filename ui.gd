@@ -17,6 +17,7 @@ func _process(delta):
 	$HUD/icon_dash/dash_cooldown.value = $"../TileMap/Player".dash_cooldown_timer.time_left
 	$label_2.set_text(str(player.no_tea))
 	$label_3.set_text(str(player.no_banana))
+	$label_5.set_text(str(player.no_frowns))
 	
 	if _laugh_meter.value < 20:
 		emotion.frame = 0

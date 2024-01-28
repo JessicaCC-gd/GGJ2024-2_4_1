@@ -17,6 +17,7 @@ var banana_scene = preload("res://banana.tscn")
 var aoe_scene = preload("res://aoe_attack.tscn")
 var no_cats = 5
 var no_tea = 3
+var no_frowns = 0
 var cat_cooldown_active = false
 var cat_cooldown_timer = Timer.new()
 
@@ -104,9 +105,10 @@ func _physics_process(delta):
 		dash_duration_timer.start()
 		dash = true
 		dash_avaliable = false
-	if Input.is_action_just_pressed("action_5"):
+	if Input.is_action_just_pressed("action_5") && no_frowns > 0:
 		var aoe = aoe_scene.instantiate()
 		aoe.position = position
+		no_frowns -= 1
 		get_parent().add_child(aoe)
 
 func reactivate_cat():
