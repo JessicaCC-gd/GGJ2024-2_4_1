@@ -79,6 +79,7 @@ func die():
 	if !dead:
 		call_deferred("disable_collisions")
 		dead_timer.start()
+		$AudioStreamPlayer2D.play()
 		dead = true
 
 func disable_collisions():

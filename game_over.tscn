@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://q00tu5c4sykv"]
 
-[ext_resource type="Texture2D" uid="uid://dyfno8ekkohuf" path="res://assets/sprites/character_faces.png" id="1_vur2x"]
+[ext_resource type="Texture2D" uid="uid://ccq1vyu3g3psk" path="res://assets/sprites/character_faces.png" id="1_vur2x"]
 
 [node name="game_over" type="Control"]
 layout_mode = 3
@@ -55,3 +55,5 @@ scale = Vector2(6.82258, 6.82258)
 texture = ExtResource("1_vur2x")
 hframes = 2
 frame = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

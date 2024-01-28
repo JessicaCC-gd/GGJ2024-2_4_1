@@ -74,6 +74,7 @@ func _on_area_2d_body_exited(body):
 func explode():
 	if !dead:
 		_animated_sprite.play("pop")
+		$AudioStreamPlayer2D.play()
 		call_deferred("disable_collisions")
 		dead_timer.start()
 		dead = true

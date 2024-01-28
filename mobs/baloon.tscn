@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c421h1gwbmpim"]
+[gd_scene load_steps=16 format=3 uid="uid://c421h1gwbmpim"]
 
 [ext_resource type="Script" path="res://mobs/baloon.gd" id="1_0gtql"]
 [ext_resource type="Texture2D" uid="uid://bk5gw1vipet5p" path="res://assets/sprites/balloon.png" id="2_wbl5j"]
-[ext_resource type="Texture2D" uid="uid://dnnfe0toj4grq" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
+[ext_resource type="Texture2D" uid="uid://l356hjft457b" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
+[ext_resource type="AudioStream" uid="uid://dpbmixqvyup28" path="res://assets/sound/balloonpop-83760.mp3" id="4_0vm44"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qk7us"]
 atlas = ExtResource("2_wbl5j")
@@ -109,6 +110,9 @@ shape = SubResource("CircleShape2D_pe2hc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_plqk6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0vm44")
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

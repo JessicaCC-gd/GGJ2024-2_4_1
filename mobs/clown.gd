@@ -58,6 +58,7 @@ func _on_area_2d_body_exited(body):
 func die():
 	if !dead:
 		call_deferred("disable_collisions")
+		$AudioStreamPlayer2D.play()
 		dead_timer.start()
 		dead = true
 

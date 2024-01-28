@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://danj4or15odof"]
+[gd_scene load_steps=14 format=3 uid="uid://danj4or15odof"]
 
 [ext_resource type="Script" path="res://mobs/tickler.gd" id="1_5gwyf"]
 [ext_resource type="Texture2D" uid="uid://y84itmo1v5ts" path="res://assets/sprites/tickler_stun.png" id="2_vslco"]
 [ext_resource type="Texture2D" uid="uid://kspv4a8heywr" path="res://assets/sprites/tickler_idle.png" id="3_j0dw5"]
 [ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="4_fro0t"]
+[ext_resource type="AudioStream" uid="uid://c8nenp8wik3iq" path="res://assets/sound/whipy-woosh-transition-38006.mp3" id="5_j1t48"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
 radius = 19.0
@@ -93,6 +94,10 @@ shape = SubResource("CircleShape2D_plqk6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sfkjp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_j1t48")
+volume_db = 10.666
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
