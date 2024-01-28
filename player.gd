@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 
 var direction = Vector2(0, -1)
-var speed = 150.0
+var speed = 90.0
 var force = 100.0
 var current_damage = 0
 var laughter_meter = 0
