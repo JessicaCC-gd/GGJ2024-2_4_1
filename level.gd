@@ -13,30 +13,37 @@ var tea_spawn_timer = Timer.new()
 var cat_spawn_timer = Timer.new()
 var pu_banana_scene = preload("res://pu_banana.tscn")
 var pu_cat_scene = preload("res://pu_cat.tscn")
-#var pu_tea_scene = preload()
+var pu_tea_scene = preload("res://pu_tea.tscn")
 var rng = RandomNumberGenerator.new()
 
 @onready var player = $TileMap/Player
 
 
 func _ready():
+	set_timers()
 	SignalHandler.aw.connect(crowd_aw)
 	SignalHandler.angry.connect(crowd_angry)
+	enemy_spawn_timer.start()
+	banana_spawn_timer.start()
+	cat_spawn_timer.start()
+	tea_spawn_timer.start()
+
+
+func set_timers():
 	enemy_spawn_timer = Timer.new()
 	add_child(enemy_spawn_timer)
 	add_child(banana_spawn_timer)
 	add_child(cat_spawn_timer)
+	add_child(tea_spawn_timer)
+	tea_spawn_timer.wait_time = 1.0
 	cat_spawn_timer.wait_time = 1.0
 	banana_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.one_shot = false
-	enemy_spawn_timer.start()
-	banana_spawn_timer.start()
-	cat_spawn_timer.start()
 	banana_spawn_timer.connect("timeout", _on_banana_timer_timeout)
 	cat_spawn_timer.connect("timeout", _on_cat_timer_timeout)
+	tea_spawn_timer.connect("timeout", _on_tea_timer_timeout)
 	enemy_spawn_timer.connect("timeout", _on_enemy_timer_timeout)
-
 
 func _process(delta):
 	pass
@@ -54,6 +61,13 @@ func _on_banana_timer_timeout():
 		var pu_banana = pu_banana_scene.instantiate()
 		pu_banana.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
 		get_node("TileMap").add_child(pu_banana)
+
+func _on_tea_timer_timeout():
+	var tea_count = len(get_tree().get_nodes_in_group("tea"))
+	if tea_count < MAX_PU_TEA:
+		var pu_tea = pu_tea_scene.instantiate()
+		pu_tea.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
+		get_node("TileMap").add_child(pu_tea)
 	
 func _on_enemy_timer_timeout() -> void:
 	var enemy_count = len(get_tree().get_nodes_in_group("enemies"))
