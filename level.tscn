@@ -113,6 +113,23 @@ step = 1.0
 fill_mode = 3
 show_percentage = false
 
+[node name="icon_frown" type="Sprite2D" parent="ui/HUD"]
+position = Vector2(-23.75, 7.25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_hmhi3")
+hframes = 6
+frame = 5
+
+[node name="frown_cooldown" type="ProgressBar" parent="ui/HUD/icon_frown"]
+modulate = Color(1, 0.168627, 0.223529, 1)
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 11.0
+offset_bottom = 10.0
+step = 1.0
+fill_mode = 3
+show_percentage = false
+
 [node name="laughter_meter" type="ProgressBar" parent="ui"]
 modulate = Color(1, 1, 0, 1)
 offset_left = 571.0
