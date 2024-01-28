@@ -7,7 +7,7 @@ class_name Chicken
 
 var smoke_scene = preload("res://smoke.tscn")
 var direction = Vector2(0, 0)
-var speed = 50.0
+var speed = 35.0
 var damage_timer = Timer.new()
 var dead_timer = Timer.new()
 var dead = false

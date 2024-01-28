@@ -1,7 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4r25qawxdr8e"]
+[gd_scene load_steps=11 format=3 uid="uid://b4r25qawxdr8e"]
 
 [ext_resource type="Script" path="res://enemies/chicken.gd" id="1_07e8a"]
 [ext_resource type="Texture2D" uid="uid://cyqgys2w230jt" path="res://assets/sprites/chicken_walk.png" id="2_fsrid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khgmf"]
+atlas = ExtResource("2_fsrid")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61qtr"]
 atlas = ExtResource("2_fsrid")
@@ -21,6 +25,14 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3l6sg"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khgmf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_61qtr")
@@ -52,7 +64,7 @@ script = ExtResource("1_07e8a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3l6sg")
-animation = &"walk"
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
