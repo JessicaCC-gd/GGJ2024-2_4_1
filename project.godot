@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="241"
-run/main_scene="res://level.tscn"
+config/name="Mr. Grumpy"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
