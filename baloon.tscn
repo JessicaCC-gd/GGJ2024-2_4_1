@@ -1,25 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://di1qth45stv34"]
+[gd_scene load_steps=10 format=3 uid="uid://c421h1gwbmpim"]
 
-[ext_resource type="Script" path="res://clown.gd" id="1_vtdso"]
-[ext_resource type="Texture2D" uid="uid://dpiyae778wjfv" path="res://assets/sprites/clown_walk.png" id="2_drwaf"]
+[ext_resource type="Script" path="res://baloon.gd" id="1_0gtql"]
+[ext_resource type="Texture2D" uid="uid://bk5gw1vipet5p" path="res://assets/sprites/balloon.png" id="2_wbl5j"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0qkk"]
-atlas = ExtResource("2_drwaf")
-region = Rect2(0, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk7us"]
+atlas = ExtResource("2_wbl5j")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aq3cq"]
-atlas = ExtResource("2_drwaf")
-region = Rect2(48, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_580xs"]
+atlas = ExtResource("2_wbl5j")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kh5po"]
-atlas = ExtResource("2_drwaf")
-region = Rect2(96, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2bt5"]
+atlas = ExtResource("2_wbl5j")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2htbg"]
-atlas = ExtResource("2_drwaf")
-region = Rect2(144, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs6l4"]
+atlas = ExtResource("2_wbl5j")
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cajgu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4l6u"]
 animations = [{
 "frames": [],
 "loop": true,
@@ -28,19 +28,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y0qkk")
+"texture": SubResource("AtlasTexture_qk7us")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aq3cq")
+"texture": SubResource("AtlasTexture_580xs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kh5po")
+"texture": SubResource("AtlasTexture_w2bt5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2htbg")
+"texture": SubResource("AtlasTexture_bs6l4")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"drift",
 "speed": 5.0
 }]
 
@@ -50,14 +50,14 @@ radius = 19.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_plqk6"]
 radius = 11.1803
 
-[node name="Clown" type="CharacterBody2D"]
+[node name="baloon" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 32775
-script = ExtResource("1_vtdso")
+script = ExtResource("1_0gtql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_cajgu")
-animation = &"walk"
+sprite_frames = SubResource("SpriteFrames_p4l6u")
+animation = &"drift"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 7

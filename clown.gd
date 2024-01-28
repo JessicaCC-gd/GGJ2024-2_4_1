@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy
+class_name Clown
 
 @onready var _animated_sprite = $AnimatedSprite2D
 #var _raycast: RayCast2D
@@ -57,7 +57,7 @@ func _process(delta):
 	else:
 		direction = Vector2.ZERO
 		_animated_sprite.rotation += 2 * PI * delta
-		_animated_sprite.play("dead")
+		_animated_sprite.play("stun")
 
 func _physics_process(delta):
 	if !dead:
