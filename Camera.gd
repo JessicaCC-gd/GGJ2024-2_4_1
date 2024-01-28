@@ -9,6 +9,9 @@ func _ready():
 	var map_size_pixels = map_rect.size * tile_size
 	limit_right = map_size_pixels.x
 	limit_bottom = map_size_pixels.y
+	limit_top = 0
+	limit_left = 0
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
