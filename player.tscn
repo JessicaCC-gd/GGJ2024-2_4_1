@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1mse10v0ltx4"]
+[gd_scene load_steps=13 format=3 uid="uid://d1mse10v0ltx4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_axhjp"]
 [ext_resource type="Texture2D" uid="uid://bu4q2xw6wcqhi" path="res://assets/sprites/player_walk.png" id="1_melsa"]
-[ext_resource type="Script" path="res://temp.gd" id="3_0es82"]
 [ext_resource type="Script" path="res://Camera.gd" id="3_sk8n1"]
 [ext_resource type="AudioStream" uid="uid://bw1pv2fora4hs" path="res://assets/sound/whoosh-transitions-sfx-03-118230.mp3" id="5_qcdak"]
 [ext_resource type="AudioStream" uid="uid://om7mwq50nifq" path="res://assets/sound/cartoon-slurp-37066.mp3" id="6_vel8r"]
@@ -73,16 +72,6 @@ animation = &"idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("3_sk8n1")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 915.0
-offset_top = 28.0
-offset_right = 955.0
-offset_bottom = 51.0
-text = "test"
-script = ExtResource("3_0es82")
 
 [node name="dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_qcdak")
