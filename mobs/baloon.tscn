@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://mobs/baloon.gd" id="1_0gtql"]
 [ext_resource type="Texture2D" uid="uid://bk5gw1vipet5p" path="res://assets/sprites/balloon.png" id="2_wbl5j"]
-[ext_resource type="Texture2D" uid="uid://l356hjft457b" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
-[ext_resource type="AudioStream" uid="uid://dpbmixqvyup28" path="res://assets/sound/balloonpop-83760.mp3" id="4_0vm44"]
+[ext_resource type="Texture2D" uid="uid://c6uwt7ynt20o5" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
+[ext_resource type="AudioStream" uid="uid://bmgbgu5rorlbu" path="res://assets/sound/balloonpop-83760.mp3" id="4_0vm44"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qk7us"]
 atlas = ExtResource("2_wbl5j")
@@ -89,6 +89,7 @@ radius = 19.0
 radius = 11.1803
 
 [node name="baloon" type="CharacterBody2D"]
+z_index = 9
 collision_layer = 8
 collision_mask = 32772
 script = ExtResource("1_0gtql")
