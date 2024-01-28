@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c421h1gwbmpim"]
+[gd_scene load_steps=15 format=3 uid="uid://c421h1gwbmpim"]
 
 [ext_resource type="Script" path="res://baloon.gd" id="1_0gtql"]
 [ext_resource type="Texture2D" uid="uid://bk5gw1vipet5p" path="res://assets/sprites/balloon.png" id="2_wbl5j"]
+[ext_resource type="Texture2D" uid="uid://dojofjl3l3ptt" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qk7us"]
 atlas = ExtResource("2_wbl5j")
@@ -17,6 +18,22 @@ region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bs6l4"]
 atlas = ExtResource("2_wbl5j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da47l"]
+atlas = ExtResource("3_d3dfe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skub4"]
+atlas = ExtResource("3_d3dfe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmm11"]
+atlas = ExtResource("3_d3dfe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5y51"]
+atlas = ExtResource("3_d3dfe")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p4l6u"]
@@ -42,6 +59,23 @@ animations = [{
 "loop": true,
 "name": &"drift",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da47l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skub4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmm11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5y51")
+}],
+"loop": true,
+"name": &"pop",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
@@ -57,7 +91,7 @@ script = ExtResource("1_0gtql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p4l6u")
-animation = &"drift"
+animation = &"pop"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 7

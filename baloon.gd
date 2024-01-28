@@ -19,14 +19,14 @@ func _ready():
 	damage_timer.timeout.connect(damage_player)
 	damage_timer.wait_time = 1.0
 	add_child(damage_timer)
-	dead_timer.timeout.connect(remove)
+	dead_timer.timeout.connect(remove_no_smoke)
 	dead_timer.wait_time = 1.0
 	add_child(dead_timer)
 	
 	balloon_life = Timer.new()
 	#balloon_life.timeout.connect(remove)
 	balloon_life.timeout.connect(remove)
-	balloon_life.wait_time = 2.0
+	balloon_life.wait_time = 3.0
 	add_child(balloon_life)
 	balloon_life.start()
 
@@ -45,11 +45,16 @@ func _get_los(target_pos):
 	return null
 	
 func _process(delta):
-	var chase_direction = _get_chase_direction()
-	if chase_direction != null:
-		direction = chase_direction
-		_animated_sprite.play("drift")
-
+	if !dead:
+		var chase_direction = _get_chase_direction()
+		if chase_direction != null:
+			direction = chase_direction
+			_animated_sprite.play("drift")
+	else:
+		direction = Vector2.ZERO
+		_animated_sprite.play("pop")
+		
+		
 func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
@@ -67,10 +72,16 @@ func _on_area_2d_body_exited(body):
 		damage_timer.stop()
 
 func explode():
-	remove()
-
+	if !dead:
+		call_deferred("disable_collisions")
+		dead_timer.start()
+		dead = true
+		
 func remove():
 	var smoke = smoke_scene.instantiate()
 	smoke.position = position
 	get_parent().add_child(smoke)
+	queue_free()
+
+func remove_no_smoke():
 	queue_free()
