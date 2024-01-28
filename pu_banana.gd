@@ -13,5 +13,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		body.no_banana += 1
+		body.no_banana += 3
 		queue_free()

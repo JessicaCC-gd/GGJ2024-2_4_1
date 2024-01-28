@@ -24,9 +24,8 @@ func _ready():
 	add_child(dead_timer)
 	
 	balloon_life = Timer.new()
-	#balloon_life.timeout.connect(remove)
 	balloon_life.timeout.connect(remove)
-	balloon_life.wait_time = 10.0
+	balloon_life.wait_time = 100.0
 	add_child(balloon_life)
 	balloon_life.start()
 
@@ -54,7 +53,6 @@ func _process(delta):
 			_animated_sprite.play("drift")
 	else:
 		direction = Vector2.ZERO
-		_animated_sprite.play("pop")
 		
 		
 func _physics_process(delta):
@@ -75,6 +73,7 @@ func _on_area_2d_body_exited(body):
 
 func explode():
 	if !dead:
+		_animated_sprite.play("pop")
 		call_deferred("disable_collisions")
 		dead_timer.start()
 		dead = true

@@ -1,9 +1,9 @@
 extends Node2D
 
-const MAX_ENEMIES = 100
+const MAX_ENEMIES = 200
 const SPAWN_DISTANCE = 300
-const MAX_PU_BANANAS = 20
-const MAX_PU_TEA = 10
+const MAX_PU_BANANAS = 200
+const MAX_PU_TEA = 20
 const MAX_PU_CATS = 10
 
 var enemy_spawn_timer
@@ -38,10 +38,10 @@ func set_timers():
 	add_child(banana_spawn_timer)
 	add_child(cat_spawn_timer)
 	add_child(tea_spawn_timer)
-	tea_spawn_timer.wait_time = 2.0
-	cat_spawn_timer.wait_time = 2.0
-	banana_spawn_timer.wait_time = 2.0
-	enemy_spawn_timer.wait_time = .3
+	tea_spawn_timer.wait_time = 1.0
+	cat_spawn_timer.wait_time = 4.0
+	banana_spawn_timer.wait_time = 0.5
+	enemy_spawn_timer.wait_time = 0.3
 	enemy_spawn_timer.one_shot = false
 	banana_spawn_timer.connect("timeout", _on_banana_timer_timeout)
 	cat_spawn_timer.connect("timeout", _on_cat_timer_timeout)

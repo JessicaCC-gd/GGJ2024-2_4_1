@@ -8,7 +8,7 @@ class_name Clown
 
 var smoke_scene = preload("res://smoke.tscn")
 var direction = Vector2(0, 0)
-var speed = 100.0
+var speed = 70.0
 var damage_timer = Timer.new()
 var dead_timer = Timer.new()
 var dead = false
@@ -23,37 +23,17 @@ func _ready():
 	dead_timer.wait_time = 1.0
 	add_child(dead_timer)
 
-func _get_chase_direction():
+func _get_direction():
 	if get_node_or_null("../cat") != null:
-		var cat_direction = _get_los($"../cat".global_position)
-		if cat_direction != null:
-			return cat_direction
-
-	var size = len(_target.trail)
-	var trail_direction = null
-	for n in range(size-1, -1, -1):
-		trail_direction = _get_los(_target.trail[n])
-		if trail_direction != null:
-			return trail_direction
-	return null
-
-func _get_los(target_pos):
-	_raycast.set_target_position(target_pos - global_position)
-	_raycast.force_raycast_update()
-	if !_raycast.is_colliding():
-		return _raycast.target_position.normalized()
-	return null
+		return (global_position - $"../cat".global_position).normalized()
+	
+	return (get_node("../Player").global_position - global_position).normalized()
 	
 func _process(delta):
 	if !dead:
-		var chase_direction = _get_chase_direction()
-		if chase_direction != null:
-			direction = chase_direction
-			_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
-			_animated_sprite.play("walk")
-		else:
-			direction = Vector2.ZERO
-			_animated_sprite.play("idle")
+		direction = _get_direction()
+		_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
+		_animated_sprite.play("walk")
 	else:
 		direction = Vector2.ZERO
 		_animated_sprite.rotation += 2 * PI * delta
@@ -65,7 +45,7 @@ func _physics_process(delta):
 		move_and_slide()
 
 func damage_player():
-	get_node("../Player").laughter_meter += 50
+	get_node("../Player").laughter_meter += 20
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" :
