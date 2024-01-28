@@ -18,15 +18,18 @@ var no_cats = 5
 var no_tea = 3
 var cat_cooldown_active = false
 var cat_cooldown_timer = Timer.new()
+
 var dash_cooldown_timer = Timer.new()
 var dash_duration_timer = Timer.new()
-var no_banana = 50
-var dash = false
+const dash_cooldown = 3.0
 @export var dash_avaliable = true
-const cat_cooldown = 10.0
-const dash_cooldown = 10.0
+var dash = false
 
-const BOOST = 2
+var no_banana = 50
+
+
+const cat_cooldown = 10.0
+const BOOST = 3
 	
 func drop_scent():
 	if len(trail) >= max_trail_count:
@@ -45,7 +48,7 @@ func _ready():
 	dash_cooldown_timer.timeout.connect(reactivate_dash)
 	dash_cooldown_timer.wait_time = dash_cooldown
 	add_child(dash_cooldown_timer)
-	dash_duration_timer.wait_time = 2.0
+	dash_duration_timer.wait_time = .3
 	dash_duration_timer.timeout.connect(disable_dash)
 	add_child(dash_duration_timer)
 

@@ -65,7 +65,7 @@ func _physics_process(delta):
 		move_and_slide()
 
 func damage_player():
-	get_node("../Player").laughter_meter += 1
+	get_node("../Player").laughter_meter += 50
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" :
