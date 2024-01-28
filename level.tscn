@@ -5,13 +5,13 @@
 [ext_resource type="Script" path="res://level.gd" id="1_keucm"]
 [ext_resource type="Script" path="res://ui.gd" id="4_d8tq0"]
 [ext_resource type="Texture2D" uid="uid://ceeg0w1ymxo17" path="res://assets/sprites/ui.png" id="4_t51qj"]
-[ext_resource type="Texture2D" uid="uid://3ta5jrmiox2v" path="res://assets/sprites/cat_pickup.png" id="6_efgcw"]
+[ext_resource type="Texture2D" uid="uid://m86medpvpio" path="res://assets/sprites/cat_pickup.png" id="6_efgcw"]
 [ext_resource type="Script" path="res://laughter_meter.gd" id="6_f3vpd"]
 [ext_resource type="AudioStream" uid="uid://bhv8li5bbykn" path="res://assets/sound/angry-mob-loop-6847.mp3" id="7_75ev8"]
-[ext_resource type="Texture2D" uid="uid://c0ufelqrkutcx" path="res://assets/sprites/emotions.png" id="7_hmhi3"]
-[ext_resource type="Texture2D" uid="uid://dgad7b5hkirjp" path="res://assets/sprites/tea.png" id="7_yvx0m"]
+[ext_resource type="Texture2D" uid="uid://cn87byrc5ctg6" path="res://assets/sprites/emotions.png" id="7_hmhi3"]
+[ext_resource type="Texture2D" uid="uid://ddhdtxwb3g11e" path="res://assets/sprites/tea.png" id="7_yvx0m"]
 [ext_resource type="Texture2D" uid="uid://b7fyps667ot0g" path="res://assets/sprites/banana_peel.png" id="8_8kkof"]
-[ext_resource type="Texture2D" uid="uid://dsob6ep6kejnr" path="res://assets/sprites/dash_icon.png" id="9_hp8ns"]
+[ext_resource type="Texture2D" uid="uid://dmvj5s511ffln" path="res://assets/sprites/dash_icon.png" id="9_hp8ns"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_keucm")
@@ -34,7 +34,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_t51qj")
 
 [node name="icon_cat" type="Sprite2D" parent="ui/HUD"]
-position = Vector2(-61, 7.25)
+position = Vector2(-76, 7.25)
 scale = Vector2(0.71875, 0.71875)
 texture = ExtResource("6_efgcw")
 
@@ -49,17 +49,17 @@ fill_mode = 3
 show_percentage = false
 
 [node name="icon_tea" type="Sprite2D" parent="ui/HUD"]
-position = Vector2(-47.5, 6.75)
+position = Vector2(-62.5, 6.75)
 scale = Vector2(0.609375, 0.609375)
 texture = ExtResource("7_yvx0m")
 
 [node name="icon_banana" type="Sprite2D" parent="ui/HUD"]
-position = Vector2(-35.25, 6)
+position = Vector2(-50.25, 6)
 scale = Vector2(0.609375, 0.609375)
 texture = ExtResource("8_8kkof")
 
 [node name="icon_dash" type="Sprite2D" parent="ui/HUD"]
-position = Vector2(-21.5, 6.25)
+position = Vector2(-36.5, 6.25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_hp8ns")
 
@@ -84,23 +84,23 @@ show_percentage = false
 script = ExtResource("6_f3vpd")
 
 [node name="label_1" type="Label" parent="ui"]
-offset_left = 267.0
+offset_left = 207.0
 offset_top = 579.0
-offset_right = 307.0
+offset_right = 247.0
 offset_bottom = 602.0
 text = "0"
 
 [node name="label_2" type="Label" parent="ui"]
-offset_left = 321.0
+offset_left = 261.0
 offset_top = 579.0
-offset_right = 361.0
+offset_right = 301.0
 offset_bottom = 602.0
 text = "0"
 
 [node name="label_3" type="Label" parent="ui"]
-offset_left = 372.0
+offset_left = 312.0
 offset_top = 579.0
-offset_right = 412.0
+offset_right = 352.0
 offset_bottom = 602.0
 text = "0"
 
