@@ -1,11 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4r25qawxdr8e"]
 
 [ext_resource type="Script" path="res://mobs/chicken.gd" id="1_hgp81"]
-
-[ext_resource type="AudioStream" uid="uid://dlqwe0oegmhlx" path="res://assets/sound/chicken-alarm-call-full-with-occasional-bird-sound-6379.mp3" id="3_6o0y0"]
-
 [ext_resource type="Texture2D" uid="uid://bu6ud5ggcw1c5" path="res://assets/sprites/chicken_walk.png" id="2_s7d10"]
-
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khgmf"]
 atlas = ExtResource("2_s7d10")
@@ -62,7 +58,6 @@ radius = 19.0
 radius = 11.1803
 
 [node name="Chicken" type="CharacterBody2D"]
-z_index = 2
 collision_layer = 2
 collision_mask = 32775
 script = ExtResource("1_hgp81")
