@@ -32,7 +32,9 @@ func _ready():
 
 func _get_chase_direction():
 	var size = len(_target.trail)
-	var trail_direction = _get_los(_target.trail[len(_target.trail)-1])
+	var trail_direction = null
+	if len(_target.trail) > 0:
+		trail_direction = _get_los(_target.trail[len(_target.trail)-1])
 	if trail_direction != null:
 		return trail_direction
 	return direction
