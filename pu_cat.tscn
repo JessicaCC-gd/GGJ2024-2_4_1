@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1onh060rj5jh"]
 
 [ext_resource type="Script" path="res://pu_cat.gd" id="1_ygacd"]
-[ext_resource type="Texture2D" uid="uid://6riexp4m5hrg" path="res://assets/sprites/banana_bunch.png" id="2_bfv4m"]
+[ext_resource type="Texture2D" uid="uid://3c0xde47jceh" path="res://assets/sprites/cat_pickup.png" id="2_cl27f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpygm"]
 
@@ -11,8 +11,7 @@ collision_mask = 7
 script = ExtResource("1_ygacd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.996078, 0, 0.631373, 1)
-texture = ExtResource("2_bfv4m")
+texture = ExtResource("2_cl27f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bpygm")
