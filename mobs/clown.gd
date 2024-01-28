@@ -11,6 +11,7 @@ var speed = 70.0
 var damage_timer = Timer.new()
 var dead_timer = Timer.new()
 var dead = false
+var health = 1
 
 func _ready():
 	_animated_sprite.play("walk")
@@ -29,6 +30,7 @@ func _get_direction():
 	return (get_node("../Player").global_position - global_position).normalized()
 	
 func _process(delta):
+	$AnimatedSprite2D.modulate = Color(1,1,1)
 	if !dead:
 		direction = _get_direction()
 		_animated_sprite.rotation = atan2(direction.y, direction.x) + PI/2
@@ -55,12 +57,16 @@ func _on_area_2d_body_exited(body):
 	if body.name == "Player" :
 		damage_timer.stop()
 
+# more like damage() now
 func die():
-	if !dead:
-		call_deferred("disable_collisions")
-		$AudioStreamPlayer2D.play()
-		dead_timer.start()
-		dead = true
+	$AnimatedSprite2D.modulate = Color.RED
+	health=health-1
+	if health <= 0:
+		if !dead:
+			call_deferred("disable_collisions")
+			$AudioStreamPlayer2D.play()
+			dead_timer.start()
+			dead = true
 
 func disable_collisions():
 	$CollisionShape2D.disabled = true

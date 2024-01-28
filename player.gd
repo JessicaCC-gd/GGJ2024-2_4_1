@@ -57,7 +57,7 @@ func _ready():
 func _physics_process(delta):
 	if laughter_meter >= laughter_max:
 		get_tree().change_scene_to_file("res://game_over.tscn")
-	var input_dir = Vector2.ZERO
+	var input_dir = Vector2.ZERO 
 	if Input.is_action_pressed("move_left"):
 		input_dir.x -= 1
 	if Input.is_action_pressed("move_right"):
