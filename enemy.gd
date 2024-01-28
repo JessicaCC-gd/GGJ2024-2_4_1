@@ -78,9 +78,12 @@ func _on_area_2d_body_exited(body):
 
 func die():
 	if !dead:
-		$CollisionShape2D.disabled = true
+		call_deferred("disable_collisions")
 		dead_timer.start()
 		dead = true
+
+func disable_collisions():
+	$CollisionShape2D.disabled = true
 
 func remove():
 	var smoke = smoke_scene.instantiate()
