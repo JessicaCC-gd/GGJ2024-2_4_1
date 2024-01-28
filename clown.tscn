@@ -1,7 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://di1qth45stv34"]
+[gd_scene load_steps=12 format=3 uid="uid://di1qth45stv34"]
 
 [ext_resource type="Script" path="res://clown.gd" id="1_vtdso"]
 [ext_resource type="Texture2D" uid="uid://dpiyae778wjfv" path="res://assets/sprites/clown_walk.png" id="2_drwaf"]
+[ext_resource type="Texture2D" uid="uid://bem1vyub1qg5c" path="res://assets/sprites/clown_stun.png" id="2_lmx5a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3f8s"]
+atlas = ExtResource("2_lmx5a")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0qkk"]
 atlas = ExtResource("2_drwaf")
@@ -24,6 +29,14 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3f8s")
+}],
+"loop": true,
+"name": &"stun",
 "speed": 5.0
 }, {
 "frames": [{
@@ -57,7 +70,7 @@ script = ExtResource("1_vtdso")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cajgu")
-animation = &"walk"
+animation = &"stun"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 7
