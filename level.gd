@@ -10,6 +10,7 @@ var enemy_spawn_timer
 var enemy_scene = preload("res://enemy.tscn")
 var clown_scene = preload("res://clown.tscn")
 var baloon_scene = preload("res://baloon.tscn")
+var chicken_scene = preload("res://enemies/chicken.tscn")
 var banana_spawn_timer = Timer.new()
 var tea_spawn_timer = Timer.new()
 var cat_spawn_timer = Timer.new()
@@ -87,6 +88,8 @@ func _on_enemy_timer_timeout() -> void:
 		var enemy
 		if randf() < 0.6:
 			enemy = enemy_scene.instantiate()
+		elif randf() < 0.3:
+			enemy = chicken_scene.instantiate()
 		elif randf() < 0.6:
 			enemy = baloon_scene.instantiate()
 		else:
