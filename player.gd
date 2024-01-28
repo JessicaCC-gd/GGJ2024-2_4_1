@@ -30,7 +30,7 @@ var no_banana = 50
 
 
 const cat_cooldown = 10.0
-const BOOST = 3
+const BOOST = 5
 	
 func drop_scent():
 	if len(trail) >= max_trail_count:
