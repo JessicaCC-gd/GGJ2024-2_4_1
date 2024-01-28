@@ -51,24 +51,33 @@ func _process(delta):
 	pass
 	
 func _on_cat_timer_timeout():
+	var pos : Vector2
 	var cat_count = len(get_tree().get_nodes_in_group("cat"))
 	if cat_count < MAX_PU_CATS:
 		var pu_cat = pu_cat_scene.instantiate()
-		pu_cat.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
+		pos.y = randi_range(32, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
+		pos.x = randi_range(32, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
+		pu_cat.position = pos
 		get_node("TileMap").add_child(pu_cat)
 	
 func _on_banana_timer_timeout():
+	var pos : Vector2
 	var banana_count = len(get_tree().get_nodes_in_group("bananas"))
 	if banana_count < MAX_PU_BANANAS:
 		var pu_banana = pu_banana_scene.instantiate()
-		pu_banana.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
+		pos.y = randi_range(32, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
+		pos.x = randi_range(32, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
+		pu_banana.position = pos
 		get_node("TileMap").add_child(pu_banana)
 
 func _on_tea_timer_timeout():
+	var pos : Vector2
 	var tea_count = len(get_tree().get_nodes_in_group("tea"))
 	if tea_count < MAX_PU_TEA:
 		var pu_tea = pu_tea_scene.instantiate()
-		pu_tea.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
+		pos.y = randi_range(32, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
+		pos.x = randi_range(32, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
+		pu_tea.position = pos
 		get_node("TileMap").add_child(pu_tea)
 	
 func _on_enemy_timer_timeout() -> void:
@@ -84,8 +93,8 @@ func _on_enemy_timer_timeout() -> void:
 			enemy = clown_scene.instantiate()
 		
 		while true:
-			pos.y = randi_range(0, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
-			pos.x = randi_range(0, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
+			pos.y = randi_range(32, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
+			pos.x = randi_range(32, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
 			var distance = pos.distance_to(player.position)
 			if (distance > 200 && distance < 700):
 				break
