@@ -26,7 +26,7 @@ func _ready():
 	balloon_life = Timer.new()
 	#balloon_life.timeout.connect(remove)
 	balloon_life.timeout.connect(remove)
-	balloon_life.wait_time = 3.0
+	balloon_life.wait_time = 10.0
 	add_child(balloon_life)
 	balloon_life.start()
 
@@ -76,6 +76,9 @@ func explode():
 		call_deferred("disable_collisions")
 		dead_timer.start()
 		dead = true
+		
+func disable_collisions():
+	$CollisionShape2D.disabled = true
 		
 func remove():
 	var smoke = smoke_scene.instantiate()

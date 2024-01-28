@@ -78,6 +78,7 @@ action_4={
 2d_physics/layer_1="terrain"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="player"
+2d_physics/layer_4="baloons"
 
 [rendering]
 
