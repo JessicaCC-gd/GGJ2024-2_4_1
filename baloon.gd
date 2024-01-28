@@ -10,6 +10,7 @@ var direction = Vector2(0, 0)
 var speed = 20.0
 var damage_timer = Timer.new()
 var dead_timer = Timer.new()
+var balloon_life = Timer.new()
 var dead = false
 
 func _ready():
@@ -21,6 +22,13 @@ func _ready():
 	dead_timer.timeout.connect(remove)
 	dead_timer.wait_time = 1.0
 	add_child(dead_timer)
+	
+	balloon_life = Timer.new()
+	#balloon_life.timeout.connect(remove)
+	balloon_life.timeout.connect(remove)
+	balloon_life.wait_time = 2.0
+	add_child(balloon_life)
+	balloon_life.start()
 
 func _get_chase_direction():
 	var size = len(_target.trail)
@@ -58,6 +66,8 @@ func _on_area_2d_body_exited(body):
 	if body.name == "Player" :
 		damage_timer.stop()
 
+func explode():
+	remove()
 
 func remove():
 	var smoke = smoke_scene.instantiate()
