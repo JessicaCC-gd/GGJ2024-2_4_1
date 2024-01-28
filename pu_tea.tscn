@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfiqrhepv7tx0"]
+[gd_scene load_steps=5 format=3 uid="uid://cfiqrhepv7tx0"]
 
 [ext_resource type="Script" path="res://pu_tea.gd" id="1_msox7"]
 [ext_resource type="Texture2D" uid="uid://calvwql3pfqjr" path="res://assets/sprites/tea.png" id="2_g7hmo"]
+[ext_resource type="AudioStream" uid="uid://m3rnrh7xkd1l" path="res://assets/sound/happy-pop-3-185288.mp3" id="3_ns1ad"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpygm"]
 
@@ -15,5 +16,9 @@ texture = ExtResource("2_g7hmo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bpygm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ns1ad")
+volume_db = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

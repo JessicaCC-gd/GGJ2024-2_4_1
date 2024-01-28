@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpyky3qfidgc4"]
+[gd_scene load_steps=10 format=3 uid="uid://cpyky3qfidgc4"]
 
 [ext_resource type="Texture2D" uid="uid://d3pk6pou6g1q4" path="res://assets/sprites/cat_idle.png" id="1_k01sr"]
 [ext_resource type="Script" path="res://mobs/cat.gd" id="1_qxqcj"]
+[ext_resource type="AudioStream" uid="uid://buurwy01hbr0x" path="res://assets/sound/panic-stricken-screaming-1-6880.mp3" id="3_nkder"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_auvnd"]
 atlas = ExtResource("1_k01sr")
@@ -57,3 +58,8 @@ frame_progress = 0.711897
 shape = SubResource("CircleShape2D_y3hmm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nkder")
+volume_db = -3.0
+autoplay = true

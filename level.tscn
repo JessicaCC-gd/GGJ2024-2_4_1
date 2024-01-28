@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=15 format=3 uid="uid://3muonx48wxxe"]
 
 [ext_resource type="TileSet" uid="uid://cg5qbb0ok027o" path="res://tileset.tres" id="1_5yl0r"]
 [ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://calvwql3pfqjr" path="res://assets/sprites/tea.png" id="7_yvx0m"]
 [ext_resource type="Texture2D" uid="uid://b7fyps667ot0g" path="res://assets/sprites/banana_peel.png" id="8_8kkof"]
 [ext_resource type="Texture2D" uid="uid://csi0plqs0aagq" path="res://assets/sprites/dash_icon.png" id="9_hp8ns"]
+[ext_resource type="AudioStream" uid="uid://hqgardbyl321" path="res://assets/sound/chicken-alarm-call-full-with-occasional-bird-sound-6379.mp3" id="12_avrgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnrye"]
 size = Vector2(20, 4379)
@@ -173,6 +174,11 @@ position = Vector2(512, 540)
 scale = Vector2(3.1875, 3)
 texture = ExtResource("7_hmhi3")
 hframes = 6
+
+[node name="chicken" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_avrgw")
+volume_db = -5.012
+autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_75ev8")

@@ -13,5 +13,8 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
+		$AudioStreamPlayer.play()
 		body.no_tea += 1
+		visible = false 
+		await $AudioStreamPlayer.finished
 		queue_free()

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://q00tu5c4sykv"]
+[gd_scene load_steps=4 format=3 uid="uid://q00tu5c4sykv"]
 
 [ext_resource type="Texture2D" uid="uid://ccq1vyu3g3psk" path="res://assets/sprites/character_faces.png" id="1_vur2x"]
+[ext_resource type="AudioStream" uid="uid://bd66b46lqilop" path="res://assets/sound/hysterical-laughter-73517.mp3" id="2_ljb5e"]
+[ext_resource type="AudioStream" uid="uid://cv83tw2lxcxx2" path="res://assets/sound/crowdyayapplause25ppllong-6948.mp3" id="3_etr25"]
 
 [node name="game_over" type="Control"]
 layout_mode = 3
@@ -57,3 +59,9 @@ hframes = 2
 frame = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ljb5e")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_etr25")
+autoplay = true

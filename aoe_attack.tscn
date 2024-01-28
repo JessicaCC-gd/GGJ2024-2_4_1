@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cows41sdvvxld"]
+[gd_scene load_steps=4 format=3 uid="uid://cows41sdvvxld"]
 
 [ext_resource type="Script" path="res://aoe_attack.gd" id="1_8jr70"]
+[ext_resource type="AudioStream" uid="uid://cvidws55rvvop" path="res://assets/sound/man-crying-3-184689 (mp3cut.net).mp3" id="2_1wjox"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80rre"]
 radius = 100.0
@@ -13,5 +14,9 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_80rre")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1wjox")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
