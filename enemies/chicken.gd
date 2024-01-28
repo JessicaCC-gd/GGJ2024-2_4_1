@@ -57,7 +57,6 @@ func _process(delta):
 	else:
 		direction = Vector2.ZERO
 		_animated_sprite.rotation += 2 * PI * delta
-		_animated_sprite.play("dead")
 
 func _physics_process(delta):
 	if !dead:
