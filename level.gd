@@ -37,9 +37,9 @@ func set_timers():
 	add_child(banana_spawn_timer)
 	add_child(cat_spawn_timer)
 	add_child(tea_spawn_timer)
-	tea_spawn_timer.wait_time = 1.0
-	cat_spawn_timer.wait_time = 1.0
-	banana_spawn_timer.wait_time = 1.0
+	tea_spawn_timer.wait_time = 2.0
+	cat_spawn_timer.wait_time = 2.0
+	banana_spawn_timer.wait_time = 2.0
 	enemy_spawn_timer.wait_time = 1.0
 	enemy_spawn_timer.one_shot = false
 	banana_spawn_timer.connect("timeout", _on_banana_timer_timeout)
