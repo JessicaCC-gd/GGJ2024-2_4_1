@@ -8,7 +8,7 @@ var speed = 150.0
 var force = 100.0
 var current_damage = 0
 var laughter_meter = 0
-var laughter_max = 100
+const laughter_max = 100
 var trail = []
 var max_trail_count = 5
 var scent_timer = Timer.new()
@@ -20,9 +20,11 @@ var cat_cooldown_active = false
 var cat_cooldown_timer = Timer.new()
 var dash_cooldown_timer = Timer.new()
 var dash_duration_timer = Timer.new()
-var no_banana = 100
+var no_banana = 50
 var dash = false
 @export var dash_avaliable = true
+const cat_cooldown = 10.0
+const dash_cooldown = 10.0
 
 const BOOST = 2
 	
@@ -32,7 +34,7 @@ func drop_scent():
 	trail.push_back(global_position)
 
 func _ready():
-	cat_cooldown_timer.wait_time = 10.0
+	cat_cooldown_timer.wait_time = cat_cooldown
 	cat_cooldown_timer.one_shot = true
 	cat_cooldown_timer.timeout.connect(reactivate_cat)
 	add_child(cat_cooldown_timer)
@@ -41,7 +43,7 @@ func _ready():
 	add_child(scent_timer)
 	scent_timer.start()
 	dash_cooldown_timer.timeout.connect(reactivate_dash)
-	dash_cooldown_timer.wait_time = 10.0
+	dash_cooldown_timer.wait_time = dash_cooldown
 	add_child(dash_cooldown_timer)
 	dash_duration_timer.wait_time = 2.0
 	dash_duration_timer.timeout.connect(disable_dash)

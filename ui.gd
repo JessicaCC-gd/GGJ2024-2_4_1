@@ -5,14 +5,17 @@ extends CanvasLayer
 @onready var emotion = $Emotion
 
 func _ready():
-	pass # Replace with function body.
-
+	$HUD/icon_cat/cat_cooldown.max_value = $"../TileMap/Player".cat_cooldown
+	$HUD/icon_dash/dash_cooldown.max_value = $"../TileMap/Player".dash_cooldown
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$HUD/icon_cat/cat_cooldown.visible = $"../TileMap/Player".cat_cooldown_active
+	$HUD/icon_dash/dash_cooldown.visible = !$"../TileMap/Player".dash_avaliable
 	$label_1.set_text(str(player.no_cats))
+	$HUD/icon_cat/cat_cooldown.value = $"../TileMap/Player".cat_cooldown_timer.time_left
+	$HUD/icon_dash/dash_cooldown.value = $"../TileMap/Player".dash_cooldown_timer.time_left
 	$label_2.set_text(str(player.no_tea))
-	$label_4.set_text(str(floor(player.dash_cooldown_timer.time_left)))
 	$label_3.set_text(str(player.no_banana))
 	
 	if _laugh_meter.value < 20:

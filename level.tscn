@@ -36,6 +36,16 @@ position = Vector2(-61, 7.25)
 scale = Vector2(0.71875, 0.71875)
 texture = ExtResource("6_efgcw")
 
+[node name="cat_cooldown" type="ProgressBar" parent="ui/HUD/icon_cat"]
+modulate = Color(1, 0.168627, 0.223529, 1)
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+step = 1.0
+fill_mode = 3
+show_percentage = false
+
 [node name="icon_tea" type="Sprite2D" parent="ui/HUD"]
 position = Vector2(-47.5, 6.75)
 scale = Vector2(0.609375, 0.609375)
@@ -51,7 +61,18 @@ position = Vector2(-21.5, 6.25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_hp8ns")
 
+[node name="dash_cooldown" type="ProgressBar" parent="ui/HUD/icon_dash"]
+modulate = Color(1, 0.168627, 0.223529, 1)
+offset_left = -10.5
+offset_top = -9.5
+offset_right = 10.5
+offset_bottom = 12.5
+step = 1.0
+fill_mode = 3
+show_percentage = false
+
 [node name="laughter_meter" type="ProgressBar" parent="ui"]
+modulate = Color(1, 1, 0, 1)
 offset_left = 571.0
 offset_top = 556.0
 offset_right = 778.0
@@ -79,13 +100,6 @@ offset_left = 372.0
 offset_top = 579.0
 offset_right = 412.0
 offset_bottom = 602.0
-text = "0"
-
-[node name="label_4" type="Label" parent="ui"]
-offset_left = 424.0
-offset_top = 577.0
-offset_right = 464.0
-offset_bottom = 600.0
 text = "0"
 
 [node name="Emotion" type="Sprite2D" parent="ui"]
