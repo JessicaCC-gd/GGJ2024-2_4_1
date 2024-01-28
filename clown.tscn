@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://di1qth45stv34"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_la7ng"]
+[ext_resource type="Texture2D" uid="uid://dpiyae778wjfv" path="res://assets/sprites/clown_walk.png" id="2_drwaf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0qkk"]
+atlas = ExtResource("2_drwaf")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq3cq"]
+atlas = ExtResource("2_drwaf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh5po"]
+atlas = ExtResource("2_drwaf")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2htbg"]
+atlas = ExtResource("2_drwaf")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cajgu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0qkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq3cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh5po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2htbg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plqk6"]
+radius = 11.1803
+
+[node name="Clown" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 32775
+script = ExtResource("1_la7ng")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cajgu")
+animation = &"walk"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = -1
+shape = SubResource("CircleShape2D_pe2hc")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_plqk6")
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

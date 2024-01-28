@@ -8,6 +8,7 @@ const MAX_PU_CATS = 10
 
 var enemy_spawn_timer
 var enemy_scene = preload("res://enemy.tscn")
+var clown_scene = preload("res://clown.tscn")
 var banana_spawn_timer = Timer.new()
 var tea_spawn_timer = Timer.new()
 var cat_spawn_timer = Timer.new()
@@ -72,7 +73,12 @@ func _on_tea_timer_timeout():
 func _on_enemy_timer_timeout() -> void:
 	var enemy_count = len(get_tree().get_nodes_in_group("enemies"))
 	if enemy_count < MAX_ENEMIES:
-		var enemy = enemy_scene.instantiate()
+		var enemy
+		if randf() < 0.9:
+			enemy = enemy_scene.instantiate()
+		else:
+			enemy = clown_scene.instantiate()
+			
 		enemy.position = player.position + Vector2(SPAWN_DISTANCE, 0).rotated(rng.randf_range(-PI, PI))
 		get_node("TileMap").add_child(enemy)
 		
