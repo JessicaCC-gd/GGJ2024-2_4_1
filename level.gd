@@ -72,8 +72,7 @@ func _on_tea_timer_timeout():
 		get_node("TileMap").add_child(pu_tea)
 	
 func _on_enemy_timer_timeout() -> void:
-	var y
-	var x
+	var pos : Vector2
 	var enemy_count = len(get_tree().get_nodes_in_group("enemies"))
 	if enemy_count < MAX_ENEMIES:
 		var enemy
@@ -85,14 +84,12 @@ func _on_enemy_timer_timeout() -> void:
 			enemy = clown_scene.instantiate()
 		
 		while true:
-			y = randi_range(0, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
-			x = randi_range(0, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
-			var dif_y = y - $TileMap/Player.position.y
-			var dif_x = x - $TileMap/Player.position.x
-			if (dif_x > 300 || dif_x < -300) && (dif_y > 300 || dif_y < -300):
+			pos.y = randi_range(0, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
+			pos.x = randi_range(0, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
+			var distance = pos.distance_to(player.position)
+			if (distance > 200 && distance < 700):
 				break
-		enemy.position.y = y
-		enemy.position.x = x
+		enemy.position = pos
 		get_node("TileMap").add_child(enemy)
 		
 func crowd_aw():
