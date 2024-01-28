@@ -19,7 +19,7 @@ func _ready():
 	damage_timer.wait_time = 1.0
 	add_child(damage_timer)
 	dead_timer.timeout.connect(remove)
-	dead_timer.wait_time = 1.0
+	dead_timer.wait_time = 1
 	add_child(dead_timer)
 
 func _get_chase_direction():
@@ -27,6 +27,8 @@ func _get_chase_direction():
 	if get_node_or_null("../cat") != null:
 		var cat_direction = _get_los($"../cat".global_position)
 		if cat_direction != null:
+			dead_timer.start()
+			dead = true
 			return cat_direction * -1
 
 	var size = len(_target.trail)
@@ -54,14 +56,11 @@ func _process(delta):
 		else:
 			direction = Vector2.ZERO
 			_animated_sprite.play("idle")
-	else:
-		direction = Vector2.ZERO
-		_animated_sprite.rotation += 2 * PI * delta
+
 
 func _physics_process(delta):
-	if !dead:
-		velocity = direction * speed
-		move_and_slide()
+	velocity = direction * speed
+	move_and_slide()
 
 func damage_player():
 	get_node("../Player").laughter_meter += 10
