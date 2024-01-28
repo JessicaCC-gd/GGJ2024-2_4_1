@@ -1,35 +1,41 @@
 [gd_scene load_steps=13 format=3 uid="uid://danj4or15odof"]
 
-[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="1_dblfr"]
-[ext_resource type="Script" path="res://tickler.gd" id="1_tb8p6"]
-[ext_resource type="Texture2D" uid="uid://y84itmo1v5ts" path="res://assets/sprites/tickler_stun.png" id="2_3oifu"]
-[ext_resource type="Texture2D" uid="uid://kspv4a8heywr" path="res://assets/sprites/tickler_idle.png" id="2_uwyc5"]
+[ext_resource type="Script" path="res://mobs/tickler.gd" id="1_5gwyf"]
+[ext_resource type="Texture2D" uid="uid://y84itmo1v5ts" path="res://assets/sprites/tickler_stun.png" id="2_vslco"]
+[ext_resource type="Texture2D" uid="uid://kspv4a8heywr" path="res://assets/sprites/tickler_idle.png" id="3_j0dw5"]
+[ext_resource type="Texture2D" uid="uid://dk0rslfm1nrq5" path="res://assets/sprites/tickler_walk.png" id="4_fro0t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plqk6"]
+radius = 11.1803
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ti14c"]
-atlas = ExtResource("2_uwyc5")
+atlas = ExtResource("3_j0dw5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ulu11"]
-atlas = ExtResource("1_dblfr")
+atlas = ExtResource("4_fro0t")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xyjj"]
-atlas = ExtResource("1_dblfr")
+atlas = ExtResource("4_fro0t")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2f5qh"]
-atlas = ExtResource("1_dblfr")
+atlas = ExtResource("4_fro0t")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvioe"]
-atlas = ExtResource("1_dblfr")
+atlas = ExtResource("4_fro0t")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3l6sg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfkjp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3oifu")
+"texture": ExtResource("2_vslco")
 }],
 "loop": true,
 "name": &"dead",
@@ -66,20 +72,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pe2hc"]
-radius = 19.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_plqk6"]
-radius = 11.1803
-
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 32775
-script = ExtResource("1_tb8p6")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_3l6sg")
-animation = &"dead"
+script = ExtResource("1_5gwyf")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -94,6 +90,9 @@ shape = SubResource("CircleShape2D_pe2hc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_plqk6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sfkjp")
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

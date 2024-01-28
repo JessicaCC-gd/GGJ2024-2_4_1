@@ -8,10 +8,10 @@ const MAX_PU_CATS = 10
 const MAX_PU_FROWN = 20
 
 var enemy_spawn_timer
-var enemy_scene = preload("res://enemy.tscn")
-var clown_scene = preload("res://clown.tscn")
-var baloon_scene = preload("res://baloon.tscn")
-var chicken_scene = preload("res://enemies/chicken.tscn")
+var enemy_scene = preload("res://mobs/enemy.tscn")
+var clown_scene = preload("res://mobs/clown.tscn")
+var baloon_scene = preload("res://mobs/baloon.tscn")
+var chicken_scene = preload("res://mobs/chicken.tscn")
 var banana_spawn_timer = Timer.new()
 var tea_spawn_timer = Timer.new()
 var cat_spawn_timer = Timer.new()
@@ -118,7 +118,7 @@ func _on_enemy_timer_timeout() -> void:
 			var distance = pos.distance_to(player.position)
 			if (distance > 200 && distance < 700):
 				break
-		enemy.position = pos
+		if enemy != null: enemy.position = pos
 		get_node("TileMap").add_child(enemy)
 		
 func crowd_aw():

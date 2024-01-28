@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy
+class_name Clown
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _raycast = $RayCast2D

@@ -1,26 +1,26 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4r25qawxdr8e"]
 
-[ext_resource type="Script" path="res://enemies/chicken.gd" id="1_07e8a"]
-[ext_resource type="Texture2D" uid="uid://cyqgys2w230jt" path="res://assets/sprites/chicken_walk.png" id="2_fsrid"]
+[ext_resource type="Script" path="res://mobs/chicken.gd" id="1_hgp81"]
+[ext_resource type="Texture2D" uid="uid://cyqgys2w230jt" path="res://assets/sprites/chicken_walk.png" id="2_s7d10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khgmf"]
-atlas = ExtResource("2_fsrid")
+atlas = ExtResource("2_s7d10")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61qtr"]
-atlas = ExtResource("2_fsrid")
+atlas = ExtResource("2_s7d10")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wayis"]
-atlas = ExtResource("2_fsrid")
+atlas = ExtResource("2_s7d10")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56tne"]
-atlas = ExtResource("2_fsrid")
+atlas = ExtResource("2_s7d10")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gn31j"]
-atlas = ExtResource("2_fsrid")
+atlas = ExtResource("2_s7d10")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3l6sg"]
@@ -60,7 +60,7 @@ radius = 11.1803
 [node name="Chicken" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 32775
-script = ExtResource("1_07e8a")
+script = ExtResource("1_hgp81")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3l6sg")
@@ -74,11 +74,11 @@ collision_mask = 7
 z_index = -1
 shape = SubResource("CircleShape2D_pe2hc")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_plqk6")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

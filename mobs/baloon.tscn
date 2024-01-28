@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://c421h1gwbmpim"]
 
-[ext_resource type="Script" path="res://baloon.gd" id="1_0gtql"]
-[ext_resource type="Texture2D" uid="uid://cn0rp44xby7l7" path="res://assets/sprites/balloon.png" id="2_wbl5j"]
-[ext_resource type="Texture2D" uid="uid://d4bcv4m0ipvx1" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
+[ext_resource type="Script" path="res://mobs/baloon.gd" id="1_0gtql"]
+[ext_resource type="Texture2D" uid="uid://bk5gw1vipet5p" path="res://assets/sprites/balloon.png" id="2_wbl5j"]
+[ext_resource type="Texture2D" uid="uid://dnnfe0toj4grq" path="res://assets/sprites/balloon_explode.png" id="3_d3dfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qk7us"]
 atlas = ExtResource("2_wbl5j")
