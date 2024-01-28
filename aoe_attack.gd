@@ -21,3 +21,9 @@ func spawn_particle():
 	var particle = particle_scene.instantiate()
 	particle.position = global_position + Vector2(rng.randf_range(0, 100), 0).rotated(rng.randf_range(-PI, PI))
 	get_parent().add_child(particle)
+
+
+func _on_area_2d_body_entered(body):
+	print(body)
+	if (body.is_in_group("enemies") && !body.dead):
+		body.die()

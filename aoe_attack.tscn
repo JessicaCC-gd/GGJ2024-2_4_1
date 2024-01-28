@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cows41sdvvxld"]
+[gd_scene load_steps=3 format=3 uid="uid://cows41sdvvxld"]
 
 [ext_resource type="Script" path="res://aoe_attack.gd" id="1_8jr70"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_80rre"]
+radius = 100.0
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8jr70")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_80rre")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
