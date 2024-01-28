@@ -92,6 +92,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("action_2") && no_tea > 0 && laughter_meter > 0:
 		laughter_meter = max(laughter_meter - 10, 0)
+		$slurp.play()
 		no_tea -= 1
 		
 	if Input.is_action_just_pressed("action_3") && no_banana > 0:
@@ -101,6 +102,7 @@ func _physics_process(delta):
 		no_banana -= 1
 		get_parent().add_child(banana)
 	if Input.is_action_just_pressed("action_4") && dash_avaliable:
+		$dash.play()
 		dash_cooldown_timer.start()
 		dash_duration_timer.start()
 		dash = true
