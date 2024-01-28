@@ -14,6 +14,7 @@ var max_trail_count = 5
 var scent_timer = Timer.new()
 var cat_scene = preload("res://cat.tscn")
 var banana_scene = preload("res://banana.tscn")
+var aoe_scene = preload("res://aoe_attack.tscn")
 var no_cats = 5
 var no_tea = 3
 var cat_cooldown_active = false
@@ -103,6 +104,10 @@ func _physics_process(delta):
 		dash_duration_timer.start()
 		dash = true
 		dash_avaliable = false
+	if Input.is_action_just_pressed("action_5"):
+		var aoe = aoe_scene.instantiate()
+		aoe.position = position
+		get_parent().add_child(aoe)
 
 func reactivate_cat():
 	cat_cooldown_active = false
