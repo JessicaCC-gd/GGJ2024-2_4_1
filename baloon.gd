@@ -14,7 +14,7 @@ var dead = false
 
 func _ready():
 	_animated_sprite.play("drift")
-	add_to_group("enemies")
+	add_to_group("baloons")
 	damage_timer.timeout.connect(damage_player)
 	damage_timer.wait_time = 1.0
 	add_child(damage_timer)
