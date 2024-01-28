@@ -93,7 +93,7 @@ func _on_enemy_timer_timeout() -> void:
 			enemy = clown_scene.instantiate()
 		
 		while true:
-			pos.y = randi_range(32, ($TileMap.get_used_rect().size.y - 1) * $TileMap.cell_quadrant_size)
+			pos.y = randi_range(32, ($TileMap.get_used_rect().size.y - 3) * $TileMap.cell_quadrant_size)
 			pos.x = randi_range(32, ($TileMap.get_used_rect().size.x - 1) * $TileMap.cell_quadrant_size)
 			var distance = pos.distance_to(player.position)
 			if (distance > 200 && distance < 700):

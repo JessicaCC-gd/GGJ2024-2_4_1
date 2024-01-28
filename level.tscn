@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3muonx48wxxe"]
+[gd_scene load_steps=14 format=3 uid="uid://3muonx48wxxe"]
 
 [ext_resource type="TileSet" uid="uid://cg5qbb0ok027o" path="res://tileset.tres" id="1_5yl0r"]
 [ext_resource type="PackedScene" uid="uid://d1mse10v0ltx4" path="res://player.tscn" id="1_7c3tc"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://b7fyps667ot0g" path="res://assets/sprites/banana_peel.png" id="8_8kkof"]
 [ext_resource type="Texture2D" uid="uid://csi0plqs0aagq" path="res://assets/sprites/dash_icon.png" id="9_hp8ns"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnrye"]
+size = Vector2(20, 4379)
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_keucm")
 
@@ -24,6 +27,43 @@ layer_0/tile_data = PackedInt32Array(0, 655360, 5, 65536, 655360, 5, 131072, 655
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_7c3tc")]
 position = Vector2(2128, 1120)
+
+[node name="left_wall" type="StaticBody2D" parent="TileMap"]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/left_wall"]
+position = Vector2(-10, 1211.5)
+shape = SubResource("RectangleShape2D_hnrye")
+
+[node name="right_wall" type="StaticBody2D" parent="TileMap"]
+position = Vector2(4404, 0)
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/right_wall"]
+position = Vector2(-10, 1211.5)
+shape = SubResource("RectangleShape2D_hnrye")
+
+[node name="top_wall" type="StaticBody2D" parent="TileMap"]
+position = Vector2(3000, 0)
+rotation = 1.5708
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/top_wall"]
+position = Vector2(-9.99999, 808.5)
+shape = SubResource("RectangleShape2D_hnrye")
+
+[node name="bottom_wall" type="StaticBody2D" parent="TileMap"]
+position = Vector2(3000, 2401)
+rotation = 1.5708
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/bottom_wall"]
+position = Vector2(-9.99999, 808.5)
+shape = SubResource("RectangleShape2D_hnrye")
 
 [node name="ui" type="CanvasLayer" parent="."]
 script = ExtResource("4_d8tq0")
