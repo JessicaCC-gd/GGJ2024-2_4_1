@@ -12,10 +12,9 @@ func _ready():
 	add_child(lifetime_timer)
 	lifetime_timer.start()
 	particle_spawn_timer.wait_time = 0.01
-	# particle_spawn_timer.one_shot = false
 	particle_spawn_timer.timeout.connect(spawn_particle)
 	add_child(particle_spawn_timer)
-	particle_spawn_timer.start()	
+	particle_spawn_timer.start()
 
 func spawn_particle():
 	var particle = particle_scene.instantiate()
@@ -24,6 +23,5 @@ func spawn_particle():
 
 
 func _on_area_2d_body_entered(body):
-	print(body)
 	if (body.is_in_group("enemies") && !body.dead):
 		body.die()
